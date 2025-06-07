@@ -1,13 +1,13 @@
 #include "Pokedex.h"
 
-Pokedex::Pokedex(const std::unordered_map<Pokemon, PokemonInfo>& informacion)
+Pokedex::Pokedex(const std::unordered_map<Pokemon, PokemonInfo, PokemonHash>& informacion)
     : informacion(informacion) {}
 
 void Pokedex::agregarPokemon(const Pokemon& pokemon, const PokemonInfo& info) {
     informacion[pokemon] = info;
 }
 
-void Pokedex::imprimirInformacion(const Pokemon& pokemon) const {
+void Pokedex::mostrar(const Pokemon& pokemon) const {
     auto it = informacion.find(pokemon);
     if (it != informacion.end()) {
         std::string nombre = it->first.getNombre();
@@ -36,11 +36,17 @@ void Pokedex::imprimirInformacion(const Pokemon& pokemon) const {
 
         std::cout << "Nivel:" << nivel_pokemon << std::endl;
     } else {
-        std::cout << "Pokemon no encontrado en la Pokedex." << std::endl;
+        std::cout << "¡Pokemon desconocido!" << std::endl;
     }
 }
 
 size_t PokemonHash::operator()(const Pokemon& pokemon) const {
-    return std::hash<std::string>()(pokemon.getNombre()) ^
-           (std::hash<int>()(pokemon.getExperiencia()) << 1);
+    return std::hash<std::string>()(pokemon.getNombre());
+}
+
+void Pokedex::mostrarTodos() const {
+    for (const auto& par : informacion) {
+        mostrar(par.first);
+        std::cout << "-----------------------------" << std::endl;
+    }
 }

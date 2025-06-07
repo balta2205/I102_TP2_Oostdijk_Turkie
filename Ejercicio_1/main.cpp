@@ -13,7 +13,7 @@ int main() {
 
     Pokemon charmander("Charmander", 633);
     PokemonInfo charmanderInfo("Fuego", "Una lagartija con una llama en su cola.",
-        {{"Ascuas", 4}, {"Llamarada", 6}, {"Giro Fuego", 5}},
+        {{"Ascuas", 4}, {"Lanzallamas", 6}, {"Giro Fuego", 5}},
         {0, 250, 1300});
 
     Pokedex pokedex;
@@ -21,8 +21,8 @@ int main() {
     pokedex.agregarPokemon(bulbasaur, bulbasaurInfo);
     pokedex.agregarPokemon(charmander, charmanderInfo);
 
-    pokedex.imprimirInformacion(squirtle);
-    pokedex.imprimirInformacion(Pokemon("Pikachu", 390)); // No encontrado
+    pokedex.mostrar(squirtle);
+    pokedex.mostrar(Pokemon("Pikachu", 390)); // No encontrado
 
     return 0;
 }
