@@ -16,7 +16,16 @@ void Pokedex::mostrar(const Pokemon& pokemon) const {
 
         std::cout << "Nombre: " << nombre << std::endl;
         std::cout << "Experiencia: " << experiencia << std::endl;
-        std::cout << "Tipo: " << info.getTipo() << std::endl;
+        std::cout << "Tipos: ";
+        const auto& tipos = info.getTipos();
+        for (const auto& tipo : tipos) { 
+            if (tipo == tipos.back()) {
+                std::cout << tipo; // Evita la coma al final del último tipo
+                continue;
+            }
+            std::cout << tipo << ", ";
+        }
+        std::cout << std::endl;
         std::cout << "Descripcion: " << info.getDescripcion() << std::endl;
 
         std::cout << "Ataques disponibles por nivel:" << std::endl;
