@@ -8,8 +8,8 @@
 
 class PokemonInfo {
 private:
-    std::vector<std::string> tipos;
-    std::string descripcion;
+    std::vector<std::string> tipos; // Decidimos usar un vector porque pueden tener dos tipos diferentes
+    std::string descripcion; // Descripción del Pokémon
     std::unordered_map<std::string, int> ataquesDisponiblesPorNivel; // Almacena ataques por nombre y daño
     std::array<int, 3> experienciaProximoNivel = {0, 0, 0}; // Experiencia necesaria por nivel: [nivel 1, 2, 3]
 

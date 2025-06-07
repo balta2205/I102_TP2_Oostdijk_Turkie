@@ -1,11 +1,11 @@
 #include "Pokemon.h"
 
-// Constructor.
+// Constructor
 Pokemon::Pokemon(const std::string& nombre, int experiencia) : nombre(nombre), experiencia(experiencia) {}
 
-// Setters.
+// Setters
 void Pokemon::setExperiencia(int experiencia) {this->experiencia = experiencia;}
 
-// Getters.
+// Getters
 const std::string& Pokemon::getNombre() const {return this->nombre;}
 int Pokemon::getExperiencia() const {return this->experiencia;}

@@ -21,7 +21,7 @@ int main() {
     pokedex.agregarPokemon(bulbasaur, bulbasaurInfo);
     pokedex.agregarPokemon(charmander, charmanderInfo);
 
-    pokedex.mostrar(squirtle);
+    pokedex.mostrar(squirtle); // Encontrado
     pokedex.mostrar(Pokemon("Pikachu", 390)); // No encontrado
 
     return 0;
