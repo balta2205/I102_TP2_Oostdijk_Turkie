@@ -1,0 +1,151 @@
+1;Bulbasaur;Grass,Poison;A strange seed was planted on its back at birth. The plant sprouts and grows with this POKéMON.;Razor Wind:4,Swords Dance:16,Cut:4,Bind:14,Vine Whip:5;0,350,850;2,Ivysaur
+2;Ivysaur;Grass,Poison;When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.;Swords Dance:8,Cut:16,Bind:14,Vine Whip:16,Headbutt:4;0,300,800;3,Venusaur
+3;Venusaur;Grass,Poison;The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.;Swords Dance:12,Cut:19,Bind:18,Vine Whip:20,Headbutt:18;0,350,850;0,
+4;Charmander;Fire;Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.;Mega Punch:6,Fire Punch:19,Thunder Punch:5,Scratch:18,Swords Dance:7;0,400,1000;5,Charmeleon
+5;Charmeleon;Fire;When it swings its burning tail, it elevates the temperature to unbearably high levels.;Mega Punch:6,Fire Punch:7,Thunder Punch:12,Scratch:5,Swords Dance:14;0,300,800;6,Charizard
+6;Charizard;Fire,Flying;Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.;Mega Punch:17,Fire Punch:20,Thunder Punch:5,Scratch:9,Swords Dance:11;0,250,850;0,
+7;Squirtle;Water;After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth.;Mega Punch:18,Ice Punch:18,Mega Kick:17,Headbutt:14,Tackle:6;0,400,1000;8,Wartortle
+8;Wartortle;Water;Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance.;Mega Punch:9,Ice Punch:9,Mega Kick:19,Headbutt:9,Tackle:12;0,350,950;9,Blastoise
+9;Blastoise;Water;A brutal POKéMON with pressurized water jets on its shell. They are used for high speed tackles.;Mega Punch:13,Ice Punch:18,Mega Kick:16,Headbutt:16,Tackle:19;0,400,900;0,
+10;Caterpie;Bug;Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls.;Tackle:13,String Shot:20,Snore:7,Bug Bite:11,Electroweb:15;0,350,850;11,Metapod
+11;Metapod;Bug;This POKéMON is vulnerable to attack while its shell is soft, exposing its weak and tender body.;String Shot:13,Harden:13,Iron Defense:11,Bug Bite:15,Electroweb:11;0,250,750;12,Butterfree
+12;Butterfree;Bug,Flying;In battle, it flaps its wings at high speed to release highly toxic dust into the air.;Razor Wind:10,Gust:10,Whirlwind:14,Headbutt:8,Tackle:17;0,250,650;0,
+13;Weedle;Bug,Poison;Often found in forests, eating leaves. It has a sharp venomous stinger on its head.;Poison Sting:20,String Shot:19,Bug Bite:16,Electroweb:4,Unknown:13;0,300,800;14,Kakuna
+14;Kakuna;Bug,Poison;Almost incapable of moving, this POKéMON can only harden its shell to protect itself from predators.;String Shot:12,Harden:9,Iron Defense:19,Bug Bite:10,Electroweb:16;0,250,850;15,Beedrill
+15;Beedrill;Bug,Poison;It has three poisonous stingers on its forelegs and its tail. They are used to jab its enemy repeatedly.;Swords Dance:5,Cut:8,Headbutt:14,Fury Attack:7,Take Down:8;0,350,850;0,
+16;Pidgey;Normal,Flying;A common sight in forests and woods. It flaps its wings at ground level to kick up blinding sand.;Razor Wind:16,Gust:6,Wing Attack:14,Whirlwind:5,Fly:5;0,250,750;17,Pidgeotto
+17;Pidgeotto;Normal,Flying;Very protective of its sprawling territorial area, this POKéMON will fiercely peck at any intruder.;Razor Wind:9,Gust:8,Wing Attack:15,Whirlwind:6,Fly:9;0,350,950;18,Pidgeot
+18;Pidgeot;Normal,Flying;When hunting, it skims the surface of water at high speed to pick off unwary prey such as MAGIKARP.;Razor Wind:6,Gust:8,Wing Attack:17,Whirlwind:7,Fly:4;0,350,950;0,
+19;Rattata;Normal;Bites anything when it attacks. Small and very quick, it is a common sight in many places.;Cut:18,Headbutt:18,Tackle:10,Body Slam:7,Take Down:19;0,250,850;20,Raticate
+20;Raticate;Normal;It uses its whis­ kers to maintain its balance. It apparently slows down if they are cut off.;Swords Dance:11,Cut:9,Headbutt:19,Tackle:13,Body Slam:20;0,250,650;0,
+21;Spearow;Normal,Flying;It flaps its small wings busily to fly. Using its beak, it searches in grass for prey.;Razor Wind:18,Wing Attack:14,Whirlwind:19,Fly:7,Headbutt:14;0,250,850;22,Fearow
+22;Fearow;Normal,Flying;With its huge and magnificent wings, it can keep aloft without ever having to land for rest.;Razor Wind:5,Wing Attack:11,Whirlwind:9,Fly:4,Headbutt:19;0,250,850;0,
+23;Ekans;Poison;Moves silently and stealthily. Eats the eggs of birds, such as PIDGEY and SPEAROW, whole.;Bind:6,Slam:20,Headbutt:5,Body Slam:14,Wrap:19;0,350,750;24,Arbok
+24;Arbok;Poison;It is rumored that the ferocious warning markings on its belly differ from area to area.;Bind:15,Slam:16,Headbutt:20,Body Slam:15,Wrap:20;0,300,800;0,
+25;Pikachu;Electric;When several of these POKéMON gather, their electricity could build and cause lightning storms.;Mega Punch:5,Pay Day:11,Thunder Punch:4,Slam:20,Double Kick:8;0,400,1000;26,Raichu
+26;Raichu;Electric;Its long tail serves as a ground to protect itself from its own high-voltage power.;Mega Punch:14,Pay Day:5,Thunder Punch:12,Slam:6,Mega Kick:15;0,400,1000;0,
+27;Sandshrew;Ground;Burrows deep underground in arid locations far from water. It only emerges to hunt for food.;Scratch:4,Swords Dance:20,Cut:10,Sand Attack:19,Headbutt:15;0,300,700;28,Sandslash
+28;Sandslash;Ground;Curls up into a spiny ball when threatened. It can roll while curled up to attack or escape.;Scratch:16,Swords Dance:20,Cut:13,Sand Attack:16,Headbutt:18;0,300,700;0,
+29;Nidoran-f;Poison;Although small, its venomous barbs render this POKéMON dangerous. The female has smaller horns.;Scratch:4,Cut:19,Double Kick:20,Headbutt:11,Tackle:17;0,250,850;30,Nidorina
+30;Nidorina;Poison;The female's horn develops slowly. Prefers physical attacks such as clawing and biting.;Scratch:17,Cut:5,Double Kick:16,Headbutt:14,Horn Drill:17;0,350,950;31,Nidoqueen
+31;Nidoqueen;Poison,Ground;Its hard scales provide strong protection. It uses its hefty bulk to execute powerful moves.;Mega Punch:20,Pay Day:4,Fire Punch:8,Ice Punch:8,Thunder Punch:17;0,400,800;0,
+32;Nidoran-m;Poison;Stiffens its ears to sense danger. The larger its horns, the more powerful its secreted venom.;Cut:19,Double Kick:17,Headbutt:14,Horn Attack:11,Fury Attack:5;0,350,950;33,Nidorino
+33;Nidorino;Poison;An aggressive POKéMON that is quick to attack. The horn on its head secretes a powerful venom.;Cut:19,Double Kick:4,Headbutt:9,Horn Attack:20,Fury Attack:12;0,350,850;34,Nidoking
+34;Nidoking;Poison,Ground;It uses its powerful tail in battle to smash, constrict, then break the prey's bones.;Mega Punch:19,Pay Day:13,Fire Punch:6,Ice Punch:4,Thunder Punch:19;0,400,1000;0,
+35;Clefairy;Fairy;Its magical and cute appeal has many admirers. It is rare and found only in certain areas.;Pound:19,Double Slap:13,Mega Punch:4,Fire Punch:7,Ice Punch:9;0,300,900;36,Clefable
+36;Clefable;Fairy;A timid fairy POKéMON that is rarely seen. It will run and hide the moment it senses people.;Pound:9,Double Slap:7,Mega Punch:5,Fire Punch:12,Ice Punch:10;0,300,800;0,
+37;Vulpix;Fire;At the time of birth, it has just one tail. The tail splits from its tip as it grows older.;Headbutt:14,Tackle:10,Body Slam:9,Take Down:6,Double Edge:8;0,300,700;38,Ninetales
+38;Ninetales;Fire;Very smart and very vengeful. Grabbing one of its many tails could result in a 1000-year curse.;Headbutt:11,Tackle:4,Body Slam:14,Take Down:10,Double Edge:10;0,400,1000;0,
+39;Jigglypuff;Normal,Fairy;When its huge eyes light up, it sings a mysteriously soothing melody that lulls its enemies to sleep.;Pound:13,Double Slap:11,Mega Punch:8,Fire Punch:15,Ice Punch:20;0,350,750;40,Wigglytuff
+40;Wigglytuff;Normal,Fairy;The body is soft and rubbery. When angered, it will suck in air and inflate itself to an enormous size.;Pound:15,Double Slap:16,Mega Punch:15,Fire Punch:10,Ice Punch:6;0,400,1000;0,
+41;Zubat;Poison,Flying;Forms colonies in perpetually dark places. Uses ultrasonic waves to identify and approach targets.;Razor Wind:17,Gust:5,Wing Attack:12,Whirlwind:12,Fly:15;0,300,900;42,Golbat
+42;Golbat;Poison,Flying;Once it strikes, it will not stop draining energy from the victim even if it gets too heavy to fly.;Razor Wind:7,Gust:14,Wing Attack:20,Whirlwind:11,Fly:18;0,300,900;169,Crobat
+43;Oddish;Grass,Poison;During the day, it keeps its face buried in the ground. At night, it wanders around sowing its seeds.;Swords Dance:18,Cut:5,Headbutt:17,Take Down:12,Double Edge:8;0,300,700;44,Gloom
+44;Gloom;Grass,Poison;The fluid that oozes from its mouth isn't drool. It is a nectar that is used to attract prey.;Swords Dance:9,Cut:19,Headbutt:13,Take Down:19,Double Edge:12;0,300,900;45,Vileplume
+45;Vileplume;Grass,Poison;It has the world’s largest petals. With every step, the petals shake out heavy clouds of toxic pollen.;Swords Dance:6,Cut:4,Headbutt:7,Body Slam:8,Take Down:8;0,350,750;0,
+46;Paras;Bug,Grass;Burrows to suck tree roots. The mushrooms on its back grow by draw­ ing nutrients from the bug host.;Scratch:13,Swords Dance:11,Cut:16,Headbutt:14,Body Slam:19;0,300,900;47,Parasect
+47;Parasect;Bug,Grass;A host-parasite pair in which the parasite mushroom has taken over the host bug. Prefers damp places.;Scratch:7,Swords Dance:6,Cut:12,Headbutt:6,Body Slam:10;0,350,750;0,
+48;Venonat;Bug,Poison;Lives in the shadows of tall trees where it eats insects. It is attracted by light at night.;Headbutt:11,Tackle:16,Take Down:14,Double Edge:20,Supersonic:13;0,250,850;49,Venomoth
+49;Venomoth;Bug,Poison;The dustlike scales covering its wings are color-coded to indicate the kinds of poison it has.;Razor Wind:19,Gust:14,Whirlwind:7,Headbutt:13,Tackle:9;0,300,800;0,
+50;Diglett;Ground;Lives about one yard underground where it feeds on plant roots. It sometimes appears above ground.;Scratch:11,Swords Dance:15,Cut:8,Sand Attack:12,Headbutt:6;0,350,850;51,Dugtrio
+51;Dugtrio;Ground;A team of DIGLETT triplets. It triggers huge earthquakes by burrowing 60 miles underground.;Scratch:20,Swords Dance:15,Cut:16,Sand Attack:10,Headbutt:4;0,400,1000;0,
+52;Meowth;Normal;It washes its face regularly to keep the coin on its forehead spotless. It doesn’t get along with Galarian Meowth.;Pay Day:13,Scratch:16,Cut:10,Headbutt:16,Body Slam:16;0,300,700;53,Persian
+53;Persian;Normal;Although its fur has many admirers, it is tough to raise as a pet because of its fickle meanness.;Pay Day:16,Scratch:15,Cut:18,Headbutt:9,Body Slam:18;0,350,850;0,
+54;Psyduck;Water;While lulling its enemies with its vacant look, this wily POKéMON will use psychokinetic powers.;Mega Punch:15,Pay Day:15,Ice Punch:5,Scratch:8,Mega Kick:15;0,300,700;55,Golduck
+55;Golduck;Water;Often seen swim­ ming elegantly by lake shores. It is often mistaken for the Japanese monster, Kappa.;Mega Punch:16,Pay Day:20,Ice Punch:5,Scratch:14,Mega Kick:15;0,300,700;0,
+56;Mankey;Fighting;Extremely quick to anger. It could be docile one moment then thrashing away the next instant.;Karate Chop:12,Mega Punch:13,Pay Day:8,Fire Punch:12,Ice Punch:13;0,300,700;57,Primeape
+57;Primeape;Fighting;Always furious and tenacious to boot. It will not abandon chasing its quarry until it is caught.;Karate Chop:6,Mega Punch:7,Pay Day:9,Fire Punch:20,Ice Punch:18;0,350,750;979,Annihilape
+58;Growlithe;Fire;Very protective of its territory. It will bark and bite to repel intruders from its space.;Double Kick:14,Headbutt:13,Body Slam:17,Take Down:20,Thrash:14;0,250,850;59,Arcanine
+59;Arcanine;Fire;A POKéMON that has been admired since the past for its beauty. It runs agilely as if on wings.;Headbutt:17,Body Slam:7,Take Down:9,Double Edge:8,Leer:19;0,250,850;0,
+60;Poliwag;Water;Its newly grown legs prevent it from running. It appears to prefer swimming than trying to stand.;Pound:9,Double Slap:10,Headbutt:7,Body Slam:13,Take Down:8;0,300,800;61,Poliwhirl
+61;Poliwhirl;Water;Capable of living in or out of water. When out of water, it sweats to keep its body slimy.;Pound:9,Double Slap:4,Mega Punch:17,Ice Punch:15,Mega Kick:13;0,250,750;62,Poliwrath
+62;Poliwrath;Water,Fighting;An adept swimmer at both the front crawl and breast stroke. Easily overtakes the best human swimmers.;Pound:16,Double Slap:8,Mega Punch:9,Ice Punch:19,Mega Kick:6;0,350,750;0,
+63;Abra;Psychic;Using its ability to read minds, it will identify impending danger and TELEPORT to safety.;Mega Punch:6,Fire Punch:4,Ice Punch:6,Thunder Punch:16,Mega Kick:13;0,250,750;64,Kadabra
+64;Kadabra;Psychic;It emits special alpha waves from its body that induce headaches just by being close by.;Mega Punch:5,Fire Punch:16,Ice Punch:18,Thunder Punch:10,Mega Kick:8;0,400,1000;65,Alakazam
+65;Alakazam;Psychic;Its brain can out­ perform a super­ computer. Its intelligence quotient is said to be 5,000.;Mega Punch:20,Fire Punch:8,Ice Punch:16,Thunder Punch:7,Mega Kick:17;0,400,1000;0,
+66;Machop;Fighting;Loves to build its muscles. It trains in all styles of martial arts to become even stronger.;Karate Chop:18,Mega Punch:16,Fire Punch:7,Ice Punch:19,Thunder Punch:8;0,350,950;67,Machoke
+67;Machoke;Fighting;Its muscular body is so powerful, it must wear a power save belt to be able to regulate its motions.;Karate Chop:15,Mega Punch:20,Fire Punch:9,Ice Punch:10,Thunder Punch:16;0,250,750;68,Machamp
+68;Machamp;Fighting;Using its heavy muscles, it throws powerful punches that can send the victim clear over the horizon.;Karate Chop:19,Mega Punch:5,Fire Punch:13,Ice Punch:13,Thunder Punch:15;0,250,650;0,
+69;Bellsprout;Grass,Poison;A carnivorous POKéMON that traps and eats bugs. It uses its root feet to soak up needed moisture.;Swords Dance:12,Cut:4,Bind:18,Slam:18,Vine Whip:18;0,400,800;70,Weepinbell
+70;Weepinbell;Grass,Poison;It spits out POISONPOWDER to immobilize the enemy and then finishes it with a spray of ACID.;Swords Dance:9,Cut:18,Bind:11,Slam:15,Vine Whip:12;0,300,900;71,Victreebel
+71;Victreebel;Grass,Poison;Said to live in huge colonies deep in jungles, although no one has ever returned from there.;Swords Dance:11,Cut:20,Bind:15,Slam:16,Vine Whip:6;0,250,750;0,
+72;Tentacool;Water,Poison;Drifts in shallow seas. Anglers who hook them by accident are often punished by its stinging acid.;Swords Dance:14,Cut:7,Bind:16,Headbutt:12,Wrap:20;0,400,800;73,Tentacruel
+73;Tentacruel;Water,Poison;The tentacles are normally kept short. On hunts, they are extended to ensnare and immobilize prey.;Swords Dance:8,Cut:13,Bind:19,Headbutt:19,Wrap:17;0,400,900;0,
+74;Geodude;Rock,Ground;Found in fields and mountains. Mistaking them for boulders, people often step or trip on them.;Mega Punch:10,Fire Punch:9,Thunder Punch:14,Sand Attack:17,Headbutt:18;0,400,800;75,Graveler
+75;Graveler;Rock,Ground;Rolls down slopes to move. It rolls over any obstacle without slowing or changing its direction.;Mega Punch:17,Fire Punch:20,Thunder Punch:13,Sand Attack:18,Headbutt:4;0,250,750;76,Golem
+76;Golem;Rock,Ground;Its boulder-like body is extremely hard. It can easily withstand dynamite blasts without damage.;Mega Punch:9,Fire Punch:11,Thunder Punch:4,Mega Kick:7,Sand Attack:17;0,400,1000;0,
+77;Ponyta;Fire;Its hooves are 10 times harder than diamonds. It can trample anything completely flat in little time.;Stomp:17,Double Kick:20,Headbutt:12,Horn Drill:9,Tackle:6;0,400,1000;78,Rapidash
+78;Rapidash;Fire;Very competitive, this POKéMON will chase anything that moves fast in the hopes of racing it.;Pay Day:17,Swords Dance:4,Stomp:10,Double Kick:8,Headbutt:18;0,250,650;0,
+79;Slowpoke;Water,Psychic;Incredibly slow and dopey. It takes 5 seconds for it to feel pain when under attack.;Pay Day:5,Stomp:11,Headbutt:14,Tackle:7,Body Slam:5;0,250,750;80,Slowbro
+80;Slowbro;Water,Psychic;The SHELLDER that is latched onto SLOWPOKE's tail is said to feed on the host's left over scraps.;Mega Punch:16,Pay Day:17,Ice Punch:18,Stomp:16,Mega Kick:17;0,350,950;0,
+81;Magnemite;Electric,Steel;Uses anti-gravity to stay suspended. Appears without warning and uses THUNDER WAVE and similar moves.;Headbutt:14,Tackle:6,Take Down:16,Double Edge:8,Supersonic:13;0,300,900;82,Magneton
+82;Magneton;Electric,Steel;Formed by several MAGNEMITEs linked together. They frequently appear when sunspots flare up.;Headbutt:4,Tackle:4,Take Down:14,Double Edge:5,Supersonic:11;0,300,700;462,Magnezone
+83;Farfetchd;Normal,Flying;The sprig of green onions it holds is its weapon. It is used much like a metal sword.;Razor Wind:5,Swords Dance:6,Cut:12,Gust:13,Whirlwind:7;0,400,800;865,Sirfetchd
+84;Doduo;Normal,Flying;A bird that makes up for its poor flying with its fast foot speed. Leaves giant footprints.;Swords Dance:6,Wing Attack:15,Whirlwind:6,Fly:17,Jump Kick:6;0,300,800;85,Dodrio
+85;Dodrio;Normal,Flying;Uses its three brains to execute complex plans. While two heads sleep, one head stays awake.;Swords Dance:7,Wing Attack:11,Whirlwind:12,Fly:16,Jump Kick:4;0,350,850;0,
+86;Seel;Water;The protruding horn on its head is very hard. It is used for bashing through thick ice.;Pay Day:18,Slam:19,Headbutt:6,Horn Drill:10,Body Slam:20;0,350,950;87,Dewgong
+87;Dewgong;Water,Ice;Stores thermal energy in its body. Swims at a steady 8 knots even in intensely cold waters.;Pay Day:15,Headbutt:7,Horn Drill:18,Body Slam:9,Take Down:18;0,250,750;0,
+88;Grimer;Poison;Appears in filthy areas. Thrives by sucking up polluted sludge that is pumped out of factories.;Pound:8,Fire Punch:14,Ice Punch:7,Thunder Punch:4,Headbutt:17;0,250,650;89,Muk
+89;Muk;Poison;Thickly covered with a filthy, vile sludge. It is so toxic, even its footprints contain poison.;Pound:15,Fire Punch:8,Ice Punch:8,Thunder Punch:16,Headbutt:19;0,300,700;0,
+90;Shellder;Water;Its hard shell repels any kind of attack. It is vulnerable only when its shell is open.;Headbutt:10,Tackle:4,Take Down:20,Double Edge:11,Twineedle:9;0,300,700;91,Cloyster
+91;Cloyster;Water,Ice;When attacked, it launches its horns in quick volleys. Its innards have never been seen.;Headbutt:5,Tackle:8,Body Slam:18,Take Down:13,Double Edge:15;0,350,850;0,
+92;Gastly;Ghost,Poison;Almost invisible, this gaseous POKéMON cloaks the target and puts it to sleep without notice.;Fire Punch:8,Ice Punch:8,Thunder Punch:9,Headbutt:16,Disable:11;0,400,900;93,Haunter
+93;Haunter;Ghost,Poison;Because of its ability to slip through block walls, it is said to be from an­ other dimension.;Fire Punch:17,Ice Punch:19,Thunder Punch:17,Headbutt:4,Mega Drain:8;0,250,650;94,Gengar
+94;Gengar;Ghost,Poison;Under a full moon, this POKéMON likes to mimic the shadows of people and laugh at their fright.;Mega Punch:5,Fire Punch:8,Ice Punch:20,Thunder Punch:15,Mega Kick:16;0,250,650;0,
+95;Onix;Rock,Ground;As it grows, the stone portions of its body harden to become similar to a diamond, but colored black.;Bind:6,Slam:17,Headbutt:12,Tackle:5,Body Slam:17;0,400,900;208,Steelix
+96;Drowzee;Psychic;Puts enemies to sleep then eats their dreams. Occasionally gets sick from eating bad dreams.;Pound:13,Mega Punch:12,Fire Punch:10,Ice Punch:16,Thunder Punch:17;0,300,900;97,Hypno
+97;Hypno;Psychic;When it locks eyes with an enemy, it will use a mix of PSI moves such as HYPNOSIS and CONFUSION.;Pound:7,Mega Punch:6,Fire Punch:18,Ice Punch:7,Thunder Punch:18;0,300,700;0,
+98;Krabby;Water;Its pincers are not only powerful weapons, they are used for balance when walking sideways.;Vice Grip:17,Guillotine:10,Swords Dance:11,Cut:15,Slam:10;0,400,900;99,Kingler
+99;Kingler;Water;The large pincer has 10000 hp of crushing power. However, its huge size makes it unwieldy to use.;Vice Grip:19,Guillotine:7,Swords Dance:17,Cut:6,Slam:19;0,250,650;0,
+100;Voltorb;Electric;Usually found in power plants. Easily mistaken for a POKé BALL, they have zapped many people.;Headbutt:14,Tackle:4,Take Down:18,Double Edge:10,Sonic Boom:10;0,250,650;101,Electrode
+101;Electrode;Electric;It stores electric energy under very high pressure. It often explodes with little or no provocation.;Headbutt:17,Tackle:6,Take Down:10,Double Edge:19,Sonic Boom:13;0,300,900;0,
+102;Exeggcute;Grass,Psychic;Often mistaken for eggs. When disturbed, they quickly gather and attack in swarms.;Swords Dance:4,Headbutt:13,Take Down:18,Double Edge:6,Psybeam:7;0,350,750;103,Exeggutor
+103;Exeggutor;Grass,Psychic;Legend has it that on rare occasions, one of its heads will drop off and continue on as an EXEGGCUTE.;Swords Dance:15,Stomp:19,Headbutt:17,Body Slam:12,Take Down:15;0,300,700;0,
+104;Cubone;Ground;Because it never removes its skull helmet, no one has ever seen this POKéMON's real face.;Mega Punch:20,Fire Punch:11,Thunder Punch:9,Swords Dance:4,Double Kick:12;0,350,850;105,Marowak
+105;Marowak;Ground;The bone it holds is its key weapon. It throws the bone skillfully like a boomerang to KO targets.;Mega Punch:13,Fire Punch:19,Thunder Punch:14,Swords Dance:7,Mega Kick:15;0,350,850;0,
+106;Hitmonlee;Fighting;When in a hurry, its legs lengthen progressively. It runs smoothly with extra long, loping strides.;Mega Punch:19,Swords Dance:14,Double Kick:14,Mega Kick:12,Jump Kick:16;0,350,850;0,
+107;Hitmonchan;Fighting;While apparently doing nothing, it fires punches in lightning fast volleys that are impossible to see.;Comet Punch:20,Mega Punch:20,Fire Punch:7,Ice Punch:16,Thunder Punch:15;0,400,1000;0,
+108;Lickitung;Normal;Its tongue can be extended like a chameleon's. It leaves a tingling sensation when it licks enemies.;Mega Punch:8,Fire Punch:17,Ice Punch:5,Thunder Punch:19,Swords Dance:18;0,400,1000;463,Lickilicky
+109;Koffing;Poison;Because it stores several kinds of toxic gases in its body, it is prone to exploding without warning.;Headbutt:15,Tackle:4,Body Slam:5,Take Down:9,Flamethrower:8;0,400,900;110,Weezing
+110;Weezing;Poison;Where two kinds of poison gases meet, 2 KOFFINGs can fuse into a WEEZING over many years.;Headbutt:6,Tackle:20,Body Slam:14,Take Down:8,Flamethrower:12;0,300,900;0,
+111;Rhyhorn;Ground,Rock;A POKéMON with a one-track mind. Once it charges,  it won't stop running until it falls asleep.;Swords Dance:13,Stomp:5,Sand Attack:14,Headbutt:13,Horn Attack:12;0,300,800;112,Rhydon
+112;Rhydon;Ground,Rock;Protected by an armor-like hide, it is capable of living in molten lava of 3,600 degrees.;Mega Punch:17,Pay Day:11,Fire Punch:13,Ice Punch:5,Thunder Punch:13;0,300,700;464,Rhyperior
+113;Chansey;Normal;A rare and elusive POKéMON that is said to bring happiness to those who manage to get it.;Pound:15,Double Slap:6,Mega Punch:7,Fire Punch:15,Ice Punch:11;0,350,850;242,Blissey
+114;Tangela;Grass;The whole body is swathed with wide vines that are similar to sea­ weed. Its vines shake as it walks.;Swords Dance:9,Cut:20,Bind:18,Slam:16,Vine Whip:20;0,350,850;465,Tangrowth
+115;Kangaskhan;Normal;The infant rarely ventures out of its mother's protective pouch until it is 3 years old.;Pound:4,Comet Punch:15,Mega Punch:6,Fire Punch:5,Ice Punch:20;0,400,1000;0,
+116;Horsea;Water;Known to shoot down flying bugs with precision blasts of ink from the surface of the water.;Razor Wind:8,Headbutt:19,Take Down:5,Double Edge:16,Leer:6;0,250,750;117,Seadra
+117;Seadra;Water;Capable of swim­ ming backwards by rapidly flapping its wing-like pectoral fins and stout tail.;Headbutt:14,Take Down:9,Double Edge:19,Leer:19,Disable:18;0,300,800;230,Kingdra
+118;Goldeen;Water;Its tail fin billows like an elegant ballroom dress, giving it the nickname of the Water Queen.;Swords Dance:13,Headbutt:17,Horn Attack:13,Fury Attack:18,Horn Drill:18;0,300,800;119,Seaking
+119;Seaking;Water;In the autumn spawning season, they can be seen swimming powerfully up rivers and creeks.;Swords Dance:19,Headbutt:19,Horn Attack:20,Fury Attack:16,Horn Drill:8;0,300,900;0,
+120;Staryu;Water;If its body is torn, it can grow back if the red core remains. The core flashes at midnight.;Headbutt:17,Tackle:14,Take Down:9,Double Edge:14,Supersonic:14;0,250,650;121,Starmie
+121;Starmie;Water,Psychic;Its central core glows with the seven colors of the rainbow. Some people value the core as a gem.;Headbutt:8,Tackle:8,Take Down:19,Double Edge:14,Water Gun:5;0,300,700;0,
+122;Mr-mime;Psychic,Fairy;If interrupted while it is miming, it will slap around the offender with its broad hands.;Pound:13,Double Slap:8,Mega Punch:19,Fire Punch:16,Ice Punch:9;0,400,900;866,Mr-rime
+123;Scyther;Bug,Flying;With ninja-like agility and speed, it can create the illusion that there is more than one.;Razor Wind:10,Swords Dance:18,Cut:20,Wing Attack:8,Headbutt:7;0,300,900;212,Scizor
+124;Jynx;Ice,Psychic;It seductively wiggles its hips as it walks. It can cause people to dance in unison with it.;Pound:16,Double Slap:20,Mega Punch:11,Ice Punch:19,Mega Kick:19;0,250,850;0,
+125;Electabuzz;Electric;Normally found near power plants, they can wander away and cause major blackouts in cities.;Mega Punch:15,Fire Punch:9,Ice Punch:18,Thunder Punch:5,Mega Kick:9;0,400,800;466,Electivire
+126;Magmar;Fire;Its body always burns with an orange glow that enables it to hide perfectly among flames.;Mega Punch:6,Fire Punch:16,Thunder Punch:10,Mega Kick:19,Headbutt:7;0,250,850;467,Magmortar
+127;Pinsir;Bug;If it fails to crush the victim in its pincers, it will swing it around and toss it hard.;Vice Grip:17,Guillotine:13,Swords Dance:10,Cut:19,Bind:17;0,250,650;0,
+128;Tauros;Normal;When it targets an enemy, it charges furiously while whipping its body with its long tails.;Stomp:20,Headbutt:9,Horn Attack:20,Horn Drill:15,Tackle:12;0,350,850;0,
+129;Magikarp;Water;In the distant past, it was somewhat stronger than the horribly weak descendants that exist today.;Tackle:9,Hydro Pump:19,Splash:15,Flail:10,Bounce:5;0,300,900;130,Gyarados
+130;Gyarados;Water,Flying;Once it begins to rampage, a GYARADOS will burn everything down, even in a harsh storm.;Bind:16,Headbutt:11,Tackle:5,Body Slam:6,Take Down:9;0,400,800;0,
+131;Lapras;Water,Ice;A POKéMON that has been over­ hunted almost to extinction. It can ferry people across the water.;Headbutt:15,Horn Drill:13,Body Slam:20,Take Down:12,Double Edge:6;0,250,750;0,
+132;Ditto;Normal;Capable of copying an enemy's genetic code to instantly transform itself into a duplicate of the enemy.;Transform:15,Unknown:10,Unknown:7,Unknown:12,Unknown:15;0,400,900;0,
+133;Eevee;Normal;Its genetic code is irregular. It may mutate if it is exposed to radiation from element STONEs.;Pay Day:6,Double Kick:14,Sand Attack:6,Headbutt:6,Tackle:17;0,250,650;134,Vaporeon
+134;Vaporeon;Water;Lives close to water. Its long tail is ridged with a fin which is often mistaken for a mermaid's.;Pay Day:11,Double Kick:15,Sand Attack:19,Headbutt:16,Tackle:8;0,350,750;0,
+135;Jolteon;Electric;It accumulates negative ions in the atmosphere to blast out 10000- volt lightning bolts.;Pay Day:18,Double Kick:17,Sand Attack:13,Headbutt:18,Tackle:9;0,300,900;0,
+136;Flareon;Fire;When storing thermal energy in its body, its temperature could soar to over 1600 degrees.;Pay Day:20,Double Kick:6,Sand Attack:17,Headbutt:13,Tackle:19;0,350,950;0,
+137;Porygon;Normal;A POKéMON that consists entirely of programming code. Capable of moving freely in cyberspace.;Headbutt:16,Tackle:15,Take Down:9,Double Edge:6,Ice Beam:19;0,400,1000;233,Porygon2
+138;Omanyte;Rock,Water;Although long extinct, in rare cases, it can be genetically resurrected from fossils.;Bind:10,Slam:9,Sand Attack:7,Headbutt:15,Horn Attack:9;0,300,700;139,Omastar
+139;Omastar;Rock,Water;A prehistoric POKéMON that died out when its heavy shell made it impossible to catch prey.;Bind:16,Sand Attack:6,Headbutt:7,Horn Attack:14,Horn Drill:16;0,400,800;0,
+140;Kabuto;Rock,Water;A POKéMON that was resurrected from a fossil found in what was once the ocean floor eons ago.;Scratch:8,Sand Attack:14,Headbutt:14,Body Slam:5,Take Down:11;0,350,850;141,Kabutops
+141;Kabutops;Rock,Water;Its sleek shape is perfect for swim­ ming. It slashes prey with its claws and drains the body fluids.;Scratch:18,Razor Wind:4,Swords Dance:11,Cut:5,Mega Kick:16;0,250,650;0,
+142;Aerodactyl;Rock,Flying;A Pokémon that roamed the skies in the dinosaur era. Its teeth are like saw blades.;Razor Wind:19,Wing Attack:9,Whirlwind:6,Fly:16,Headbutt:7;0,300,900;0,
+143;Snorlax;Normal;Very lazy. Just eats and sleeps. As its rotund bulk builds, it becomes steadily more slothful.;Mega Punch:14,Pay Day:17,Fire Punch:18,Ice Punch:6,Thunder Punch:20;0,350,750;0,
+144;Articuno;Ice,Flying;A legendary bird POKéMON that is said to appear to doomed people who are lost in icy mountains.;Razor Wind:13,Gust:17,Whirlwind:12,Fly:19,Headbutt:8;0,400,900;0,
+145;Zapdos;Electric,Flying;A legendary bird POKéMON that is said to appear from clouds while dropping enormous lightning bolts.;Razor Wind:12,Whirlwind:20,Fly:10,Headbutt:15,Take Down:10;0,400,800;0,
+146;Moltres;Fire,Flying;Known as the legendary bird of fire. Every flap of its wings creates a dazzling flash of flames.;Razor Wind:9,Gust:16,Wing Attack:19,Whirlwind:17,Fly:8;0,400,800;0,
+147;Dratini;Dragon;Long considered a mythical POKéMON until recently when a small colony was found living underwater.;Bind:13,Slam:20,Headbutt:9,Body Slam:14,Wrap:13;0,350,950;148,Dragonair
+148;Dragonair;Dragon;A mystical POKéMON that exudes a gentle aura. Has the ability to change climate conditions.;Bind:10,Slam:12,Headbutt:12,Horn Drill:12,Body Slam:9;0,300,800;149,Dragonite
+149;Dragonite;Dragon,Flying;An extremely rarely seen marine POKéMON. Its intelligence is said to match that of humans.;Mega Punch:6,Fire Punch:9,Ice Punch:6,Thunder Punch:11,Razor Wind:20;0,400,1000;0,
+150;Mewtwo;Psychic;It was created by a scientist after years of horrific gene splicing and DNA engineering experiments.;Mega Punch:7,Pay Day:11,Fire Punch:13,Ice Punch:13,Thunder Punch:4;0,300,700;0,
+151;Mew;Psychic;So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.;Pound:4,Mega Punch:8,Pay Day:6,Fire Punch:7,Ice Punch:6;0,300,900;0,
