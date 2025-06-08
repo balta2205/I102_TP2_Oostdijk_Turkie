@@ -27,6 +27,7 @@ public:
     void agregarPokemon(const Pokemon& pokemon, const PokemonInfo& info);
     void mostrar(const Pokemon& pokemon) const;
     void mostrarTodos() const;
+    PokemonInfo getPokemonInfo(const Pokemon& pokemon) const;
 };
 
 

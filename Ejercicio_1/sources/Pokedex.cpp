@@ -17,7 +17,7 @@ void Pokedex::mostrar(const Pokemon& pokemon) const {
         std::string nombre = it->first.getNombre(); // Obtengo el nombre del pokemon
         int experiencia = it->first.getExperiencia(); // Obtengo la experiencia del pokemon
         const PokemonInfo& info = it->second; // Obtengo la informacion del pokemon
-        std::cout << "=============================================" << std::endl;
+        std::cout << "============================================================================================================================" << std::endl;
 
         // Printeo del nombre del pokemon
         std::cout << "Nombre: " << nombre << std::endl;
@@ -49,20 +49,26 @@ void Pokedex::mostrar(const Pokemon& pokemon) const {
             }
             std::cout << tipo << ", ";
         }
-        std::cout << "\n" << std::endl;
+        std::cout << std::endl;
 
         // Printeo de ataques disponibles
         std::cout << "Ataques disponibles:" << std::endl;
         // Itero sobre el mapa de ataques disponibles por nivel, donde el iterador es un par de clave-valor con el nombre del ataque y su daño.
         const auto& ataquesDisponibles = info.getAtaquesDisponiblesPorNivel();
         for (const auto& ataque : ataquesDisponibles) std::cout << "    " << ataque.first << ": " << ataque.second << " de daño" << std::endl;
-        std::cout << "=============================================\n" << std::endl;
+
+        std::cout << "Experiencia para cada Nivel: " << std::endl;
+        // Printeo de la experiencia necesaria para cada nivel
+        std::cout << "    Nivel 1: " << experienciaProximoNivel[0] << " de experiencia" << std::endl;
+        std::cout << "    Nivel 2: " << experienciaProximoNivel[1] << " de experiencia" << std::endl;
+        std::cout << "    Nivel 3: " << experienciaProximoNivel[2] << " de experiencia" << std::endl;
+        std::cout << "============================================================================================================================" << std::endl;
 
     } else {
         // Si el pokemon no se encuentra en la Pokedex (el iterador apunta al final del mapa), se imprime un mensaje de error.
-        std::cout << "=============================================" << std::endl;
+        std::cout << "============================================================================================================================" << std::endl;
         std::cout << "¡Pokemon desconocido! El pokemon " << pokemon.getNombre() << " no se encuentra en la Pokedex." << std::endl;
-        std::cout << "=============================================" << std::endl; 
+        std::cout << "============================================================================================================================" << std::endl; 
     }
 }
 
@@ -72,8 +78,16 @@ size_t PokemonHash::operator()(const Pokemon& pokemon) const {
 
 void Pokedex::mostrarTodos() const {
     for (const auto& par : informacion) { // Itero sobre el mapa de informacion, donde el iterador es un par de clave-valor con el Pokemon y su informacion.
-        std::cout << "=============================================" << std::endl;
+        std::cout << "============================================================================================================================" << std::endl;
         mostrar(par.first);
-        std::cout << "=============================================" << std::endl;
+        std::cout << "============================================================================================================================" << std::endl;
     }
 }
+
+PokemonInfo Pokedex::getPokemonInfo(const Pokemon& pokemon) const {
+        auto it = informacion.find(pokemon);
+        if (it != informacion.end()) {
+            return it->second; // Retorna la información del Pokémon si se encuentra
+        }
+        throw std::runtime_error("Pokemon no encontrado en la Pokedex."); // Lanza una excepción si el Pokémon no se encuentra
+    }
