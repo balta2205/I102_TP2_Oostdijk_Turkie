@@ -9,3 +9,9 @@ ej2:
 	@./ej2
 	@rm ej2
 	@rm -rf ej2.dSYM/
+
+ej3:
+	@g++ -Wall -Wextra -Wpedantic -std=c++17 -o ej2 Ejercicio_3/main.cpp
+	@./ej2
+	@rm ej2
+	@rm -rf ej2.dSYM/
