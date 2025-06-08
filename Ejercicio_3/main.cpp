@@ -30,7 +30,6 @@ int num_serie = 0;                    // Contador global de IDs de tarea
 int cant_sensores_terminados = 0;     // Contador de sensores que ya terminaron su trabajo
 const int TOTAL_SENSORES = 3;         // Cantidad total de sensores (constante para control)
 
-
 // Función que representa a un sensor
 void sensor(int idSensor) {
     int cant_tareas = getRandom(1, 10); // Decide aleatoriamente cuántas tareas va a generar este sensor
@@ -52,15 +51,12 @@ void sensor(int idSensor) {
     cant_sensores_terminados++;          // Aumenta el contador de sensores finalizados
     tareas_cv.notify_all();              // Notifica a todos los robots por si están esperando y deben terminar
     cout << "[SENSOR " << idSensor << "] Ha terminado de generar tareas. Total tareas generadas: " << cant_tareas << endl;
-    
 }
-
 
 // Función que representa a un robot
 void robot(int idRobot) {
     while (true) {
         this_thread::sleep_for(chrono::milliseconds(250)); // Simula el procesamiento de la tarea
-
         unique_lock<mutex> lock(tareas_mtx); 
 
         // Espera hasta que haya una tarea o todos los sensores hayan terminado
@@ -77,16 +73,15 @@ void robot(int idRobot) {
             tareas.pop(); // Elimina la tarea de la cola                   
             cout << "[ROBOT " << idRobot << "] Procesando tarea " << actual.idTarea << " del sensor " << actual.idSensor << endl;
 
-            lock.unlock(); // Libera el mutex antes de dormir para no bloquear a otros hilos
-
-            
+            lock.unlock(); // Libera el mutex antes de dormir para no bloquear a otros hilos            
         }
     }
 }
 
-
 // === Función principal ===
 int main() {
+    srand(time(NULL)); // Inicializa la semilla para números aleatorios
+
     vector<thread> sensores; // Vector para almacenar los threads de los sensores
     vector<thread> robots; // Vector para almacenar los threads de los robots
 
