@@ -27,8 +27,8 @@ void Pokedex::mostrar(const Pokemon& pokemon) const {
 
         // Calculo del nivel del pokemon basado en la experiencia
         int nivel_pokemon = 1; // Inicializo el nivel del pokemon en 1, si sobrepasa los limites de experiencia, se incrementará el nivel
-        if (experiencia > experienciaProximoNivel[1]) : nivel_pokemon = 2;
-        if (experiencia > experienciaProximoNivel[2]) : nivel_pokemon = 3;
+        if (experiencia > experienciaProximoNivel[1]) nivel_pokemon = 2;
+        if (experiencia > experienciaProximoNivel[2]) nivel_pokemon = 3;
 
         // Printeo del nivel del pokemon
         std::cout << "Nivel: " << nivel_pokemon << std::endl;
@@ -55,7 +55,7 @@ void Pokedex::mostrar(const Pokemon& pokemon) const {
         std::cout << "Ataques disponibles:" << std::endl;
         // Itero sobre el mapa de ataques disponibles por nivel, donde el iterador es un par de clave-valor con el nombre del ataque y su daño.
         const auto& ataquesDisponibles = info.getAtaquesDisponiblesPorNivel();
-        for (const auto& ataque : ataquesDisponibles) : std::cout << "    " << ataque.first << ": " << ataque.second << " de daño" << std::endl;
+        for (const auto& ataque : ataquesDisponibles) std::cout << "    " << ataque.first << ": " << ataque.second << " de daño" << std::endl;
         std::cout << "=============================================\n" << std::endl;
 
     } else {
