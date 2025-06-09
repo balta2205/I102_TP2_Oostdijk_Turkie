@@ -65,11 +65,11 @@ int main() {
 
     SystemClear(); // Limpia la consola antes de continuar con la parte adicional
     std::cout << "En este momento se encuentran disponibles 3 partes adicioneles de este ejercicio." << std::endl;
-    std::cout << "Adicional 1: Buscar Pokemon por nombre o numero de Pokedex." << std::endl;
-    std::cout << "Adicional 2: Crear tu propio equipo pokemon (6 pokemones)." << std::endl;
-    std::cout << "Adicional 3: Serializar pokedex." << std::endl;
+    std::cout << "      Adicional 1: Buscar Pokemon por nombre o numero de Pokedex." << std::endl;
+    std::cout << "      Adicional 2: Serializar pokedex." << std::endl;
+    std::cout << "      Adicional 3: Crear tu propio equipo pokemon (6 pokemones)." << std::endl;
 
-    std::cout << "Seleccione una parte adicional para continuar (1-3): ";
+    std::cout << "\nSeleccione una parte adicional para continuar (1-3): ";
     int parteSeleccionada;
     std::cin >> parteSeleccionada;
     if (parteSeleccionada < 1 || parteSeleccionada > 3) {
@@ -85,7 +85,7 @@ int main() {
             ImprimirConsignas(Partes::TERCERA);
             break;
         case 3:
-            ImprimirConsignas(Partes::CUARTA);
+            tercerAdicional();
             break;
     }
 

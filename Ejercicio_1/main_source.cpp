@@ -256,3 +256,108 @@ void primerAdicional(){
 }
 
 
+template<typename T>
+concept EntradaValida = std::same_as<T, int> || std::same_as<T, std::string>;
+
+template<EntradaValida T>
+T leerDato(const std::string& mensaje, bool pide_tipos_ataques = false, int min = std::numeric_limits<int>::min(), int max = std::numeric_limits<int>::max()) {
+    std::string input;
+
+    while (true) {
+        std::cout << mensaje;
+        std::getline(std::cin, input);
+
+        if constexpr (std::same_as<T, int>) {
+            try {
+                int valor = std::stoi(input);
+                if (valor < min || valor > max) {
+                    std::cout << "El número debe estar entre " << min << " y " << max << ".\n";
+                    continue;
+                }
+                return valor;
+            } catch (const std::invalid_argument&) {
+                std::cout << "Entrada inválida. Ingrese un número entero.\n";
+            } catch (const std::out_of_range&) {
+                std::cout << "Número fuera de rango.\n";
+            }
+        } else {
+            if(pide_tipos_ataques && input.empty()) {
+                return ""; // Si se pide un ataque y el input está vacío, se retorna una cadena vacía
+            }
+            if (input.empty()) {
+                std::cout << "El texto no puede estar vacío.\n";
+            } else {
+                return input;
+            }
+        }
+    }
+}
+
+
+
+void tercerAdicional() {
+    SystemClear();
+    std::cout << "============================================================================================================================\n";
+    std::cout << "EJERCICIO 1: POKEDEX\n";
+    std::cout << "============================================================================================================================\n";
+    std::cout << "ADICIONAL 3: CREAR UNA POKEDEX, EL USUARIO INGRESA POKEMONES, Y SERIALIZA LOS DATOS.\n";
+    std::cout << "El programa cargará los datos a un archivo .bin llamado pokedex_serializada.bin.\n";
+    std::cout << "============================================================================================================================\n";
+
+    Pokedex pokedexUsuario;
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::string continuar = leerDato<std::string>("¿Desea agregar un Pokémon a su Pokedex? (y/n): ");
+    if (continuar != "y" && continuar != "Y") {
+        std::cout << "Saliendo del programa..." << std::endl;
+        return;
+    }
+
+    while (true) {
+        SystemClear();
+        std::string nombre = leerDato<std::string>("Ingrese el nombre del Pokémon: ", false);
+        int experiencia = leerDato<int>("Ingrese la experiencia del Pokémon: ", false, 0, 1000000);
+        int poke_num = leerDato<int>("Ingrese el número de Pokédex (1-151): ", false, 1, 151);
+
+        Pokemon nuevoPokemon(nombre, experiencia, poke_num);
+
+        std::string tipo1 = leerDato<std::string>("Ingrese el primer tipo del Pokémon: ", false);
+        std::string tipo2 = leerDato<std::string>("Ingrese el segundo tipo (o deje en blanco): ", true);
+        std::vector<std::string> tipos = {tipo1, tipo2};
+
+        std::string descripcion = leerDato<std::string>("Ingrese una descripción del Pokémon: ", false);
+
+        std::unordered_map<std::string, int> ataques;
+        for (int i = 0; i < 5; ++i) {
+            std::string nombreAtaque = leerDato<std::string>("Ingrese el nombre del ataque (o deje en blanco para terminar): ", true);
+            if (nombreAtaque.empty()) break;
+            int dano = leerDato<int>("Ingrese el daño del ataque: ", false, 1, 1000);
+            ataques[nombreAtaque] = dano;
+        }
+
+        std::array<int, 3> experienciaProximoNivel;
+        std::cout << "Ingrese los niveles de experiencia necesarios para el próximo nivel (3 valores):\n";
+        for (int i = 0; i < 3; ++i) {
+            experienciaProximoNivel[i] = leerDato<int>("  Nivel " + std::to_string(i + 1) + ": ", false, 1, 100000);
+        }
+
+        int nro_pokedex_evolucion = leerDato<int>("Ingrese el número de Pokédex de la evolución (o 0 si no tiene): ", false, 0, 151);
+        std::string nombre_evolucion = "";
+        if (nro_pokedex_evolucion != 0) {
+            nombre_evolucion = leerDato<std::string>("Ingrese el nombre de la evolución: ", false);
+        }
+
+        PokemonInfo nuevoPokemonInfo(tipos, descripcion, ataques, experienciaProximoNivel, std::make_pair(nro_pokedex_evolucion, nombre_evolucion));
+        pokedexUsuario.agregarPokemon(nuevoPokemon, nuevoPokemonInfo);
+        std::cout << "¡Pokémon agregado con éxito!\n";
+        pokedexUsuario.mostrar(nuevoPokemon);
+
+        std::cout << "¿Desea agregar otro Pokémon? (y/n): ";
+        char finalizar;
+        std::cin >> finalizar;
+        if (finalizar != 'y' && finalizar != 'Y') {
+            std::cout << "Saliendo del programa..." << std::endl;
+            return;
+        }
+    }
+}
