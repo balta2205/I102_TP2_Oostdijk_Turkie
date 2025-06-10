@@ -1,10 +1,7 @@
 #ifndef POKEMONINFO_H
 #define POKEMONINFO_H
 
-#include <string>
-#include <vector>
-#include <unordered_map>
-#include <array>
+#include "../../utilities.h"
 
 class PokemonInfo {
 private:

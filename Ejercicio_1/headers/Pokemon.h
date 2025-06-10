@@ -1,7 +1,7 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
-#include <string>
+#include "../../utilities.h"
 
 class Pokemon {
 private: 

@@ -1,21 +1,5 @@
 #include "Pokedex.h"
-
-// Librerías estándar
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <vector>
-#include <array>
-#include <unordered_map>
-#include <utility>         // Para std::pair
-#include <cstdlib>         // Para std::rand, std::srand
-#include <ctime>           // Para std::time
-#include <algorithm>       // Para std::all_of
-#include <concepts>        // Para std::same_as (C++20)
-#include <functional>      // Para std::hash
-#include <thread>     // std::this_thread::sleep_for
-#include <chrono>     // std::chrono::milliseconds
+#include "../utilities.h"
 
 enum class Partes {PRIMERA, SEGUNDA, TERCERA, CUARTA};
 

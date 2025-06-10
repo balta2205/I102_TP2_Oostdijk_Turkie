@@ -1,13 +1,7 @@
 #ifndef CONTROLAERONAVES_H
 #define CONTROLAERONAVES_H
 
-#include <iostream>
-#include <vector>
-#include <thread>
-#include <mutex>
-#include <fstream>
-#include <array>
-#include <chrono>
+#include "../../utilities.h"
 
 using namespace std;
 

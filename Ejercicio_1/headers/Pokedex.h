@@ -1,10 +1,9 @@
 #ifndef POKEDEX_H
 #define POKEDEX_H
 
-#include <unordered_map>
-#include <iostream>
 #include "Pokemon.h"
 #include "PokemonInfo.h"
+#include "../../utilities.h"
 
 class PokemonHash {
 public:
