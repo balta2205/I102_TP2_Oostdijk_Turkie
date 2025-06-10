@@ -78,9 +78,7 @@ size_t PokemonHash::operator()(const Pokemon& pokemon) const {
 
 void Pokedex::mostrarTodos() const {
     for (const auto& par : informacion) { // Itero sobre el mapa de informacion, donde el iterador es un par de clave-valor con el Pokemon y su informacion.
-        std::cout << "============================================================================================================================" << std::endl;
         mostrar(par.first);
-        std::cout << "============================================================================================================================" << std::endl;
     }
 }
 

@@ -65,9 +65,9 @@ int main() {
 
     SystemClear(); // Limpia la consola antes de continuar con la parte adicional
     std::cout << "En este momento se encuentran disponibles 3 partes adicioneles de este ejercicio." << std::endl;
-    std::cout << "      Adicional 1: Buscar Pokemon por nombre o numero de Pokedex." << std::endl;
-    std::cout << "      Adicional 2: Serializar pokedex." << std::endl;
-    std::cout << "      Adicional 3: Crear tu propio equipo pokemon (6 pokemones)." << std::endl;
+    std::cout << "      Adicional 1: Buscar Pokemon por nombre o numero de Pokedex en la POKEDEX MAESTRA." << std::endl;
+    std::cout << "      Adicional 2: Serializar pokedex (Serializa la Pokedex basica del la Parte Basica)." << std::endl;
+    std::cout << "      Adicional 3: Crear tu propio equipo pokemon (6 pokemones), luego los serializa." << std::endl;
 
     std::cout << "\nSeleccione una parte adicional para continuar (1-3): ";
     int parteSeleccionada;

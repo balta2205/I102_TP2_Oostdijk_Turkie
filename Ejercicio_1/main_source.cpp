@@ -230,28 +230,39 @@ void primerAdicional(){
     
     leerArchivo("datos_pokemones.txt", pokedexCompleta, numerosNombres);
 
+    char response;
     std::string informacion;
-    // Solicitar al usuario que ingrese el nombre del Pokemon o su número de Pokedex
-    std::cout << "Ingresar el nombre del Pokemon o su numero de Pokedex (1-151): ";
-    std::cin >> informacion;
-    bool esNumero = !informacion.empty() && std::all_of(informacion.begin(), informacion.end(), ::isdigit);
+    while(true){
+        // Solicitar al usuario que ingrese el nombre del Pokemon o su número de Pokedex
+        std::cout << "Ingresar el nombre del Pokemon o su numero de Pokedex (1-151): ";
+        std::cin >> informacion;
+        bool esNumero = !informacion.empty() && std::all_of(informacion.begin(), informacion.end(), ::isdigit);
 
-    if (esNumero){
+        if (esNumero){
         int poke_num = std::stoi(informacion);
         if (poke_num < 1 || poke_num > 151) {
             std::cout << "Numero de Pokedex invalido. Debe estar entre 1 y 151." << std::endl;
-            return;
+            continue;
         }
         std::pair<Pokemon, PokemonInfo> resultado = buscarEnPokedex(poke_num, pokedexCompleta, numerosNombres);
         std::cout << "Pokemon encontrado: " << resultado.first.getNombre() << std::endl;
-    }
-    else{
+        }
+        else{
         std::pair<Pokemon, PokemonInfo> resultado = buscarEnPokedex(informacion, pokedexCompleta, numerosNombres);
         if (resultado.first.getNombre().empty()) {
             std::cout << "Pokemon no encontrado." << std::endl;
             return;
         }
         std::cout << "Pokemon encontrado: " << resultado.first.getNombre() << std::endl;
+        }
+
+        std::cout << "============================================================================" << std::endl;
+        std::cout << "Desea seguir agregando pokemones? (y/n): ";
+        std::cin >> response;
+        if (response != 'y' && response != 'Y'){
+            std::cout << "Saliendo del programa..." << std::endl;
+            return;
+        }
     }
 }
 
@@ -313,7 +324,7 @@ void tercerAdicional() {
         return;
     }
 
-    while (true) {
+    for(int i = 0; i < 6; ++i) { // Permite agregar hasta 6 Pokémon
         SystemClear();
         std::string nombre = leerDato<std::string>("Ingrese el nombre del Pokémon: ", false);
         int experiencia = leerDato<int>("Ingrese la experiencia del Pokémon: ", false, 0, 1000000);
@@ -350,14 +361,23 @@ void tercerAdicional() {
         PokemonInfo nuevoPokemonInfo(tipos, descripcion, ataques, experienciaProximoNivel, std::make_pair(nro_pokedex_evolucion, nombre_evolucion));
         pokedexUsuario.agregarPokemon(nuevoPokemon, nuevoPokemonInfo);
         std::cout << "¡Pokémon agregado con éxito!\n";
-        pokedexUsuario.mostrar(nuevoPokemon);
 
         std::cout << "¿Desea agregar otro Pokémon? (y/n): ";
         char finalizar;
         std::cin >> finalizar;
         if (finalizar != 'y' && finalizar != 'Y') {
             std::cout << "Saliendo del programa..." << std::endl;
-            return;
+            break;
         }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
+
+    // Mostrar cada Pokemon agregado.
+    SystemClear();
+    std::cout << "============================================================================================================================\n";
+    std::cout << "Pokédex del usuario:\n";
+    pokedexUsuario.mostrarTodos();
+
+    return;
+
 }
