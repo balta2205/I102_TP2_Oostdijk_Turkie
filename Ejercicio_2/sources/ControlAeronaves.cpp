@@ -9,26 +9,26 @@ void ControlAeronaves::PruebaDeVuelo(){
 }
 
 void ControlAeronaves::logMessage(int id, EstadoDron estadoDron) {
-        lock_guard<mutex> lock(log_mutex); // Bloquea el mutex para evitar condiciones de carrera, se desbloquea automáticamente al salir del scope
-        switch (estadoDron) {
-            case EstadoDron::Preparado: {
-                cout << "Dron " << id << " esperando para despegar..." << endl;
-                break; 
-            }
-            case EstadoDron::Despegando: {
-                cout << "Dron " << id << " despegando..." << endl;
-                break; 
-            }
-            case EstadoDron::Volando: {
-                cout << "Dron " << id << " alcanzó altura de 10m" << endl;
-                break;
-            }
-        }    
-    } 
+    lock_guard<mutex> lock(log_mutex); // Bloquea el mutex para evitar condiciones de carrera, se desbloquea automáticamente al salir del scope
+    switch (estadoDron) {
+        case EstadoDron::Preparado: {
+            cout << "Dron " << id << " esperando para despegar..." << endl;
+            break; 
+        }
+        case EstadoDron::Despegando: {
+            cout << "Dron " << id << " despegando..." << endl;
+            break; 
+        }
+        case EstadoDron::Volando: {
+            cout << "Dron " << id << " alcanzó altura de 10m" << endl;
+            break;
+        }
+    }    
+} 
 
 void ControlAeronaves::Despegar(int id){
-        logMessage(id, EstadoDron::Preparado); // Log de que el dron está preparado para despegar
 
+        logMessage(id, EstadoDron::Preparado); // Log de que el dron está preparado para despegar
         while(true) {
             unique_lock<mutex> lock1(areas[id], defer_lock); // Evita el bloqueo inmediato
             unique_lock<mutex> lock2(areas[(id + 1) % 5], defer_lock); // Modulo 5 para el caso borde del ultimo dron
@@ -40,6 +40,5 @@ void ControlAeronaves::Despegar(int id){
             } 
             else {this_thread::sleep_for(chrono::milliseconds(50));} // Espera antes de intentar nuevamente
         } 
-
         logMessage(id, EstadoDron::Volando); // Log de que el dron ha alcanzado la altura de 10 metros
     }

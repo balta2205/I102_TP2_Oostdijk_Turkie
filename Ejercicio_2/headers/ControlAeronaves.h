@@ -16,7 +16,7 @@ private:
 public:
     // En nuestras pruebas iniciales, se crean los 5 drones y todos despegan en un tiempo de alrededor de 15 segundos
     void PruebaDeVuelo();
-    void logMessage(int id, EstadoDron estadoDron);
+    void logMessage(int id, EstadoDron estadoDron); // Método para registrar mensajes de estado de los drones
     void Despegar(int id);
 };
 
