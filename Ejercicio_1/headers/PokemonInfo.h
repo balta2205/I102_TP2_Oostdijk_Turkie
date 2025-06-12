@@ -12,12 +12,14 @@ private:
     std::pair<int, std::string> evolucion = {0, ""}; // Par que almacena el número de evolución y el nombre del Pokémon al que evoluciona
 
 public:
-    // Constructor y Destructor
+    // Constructor
     PokemonInfo() = default;
+    // Constructor con parametros
     PokemonInfo(const std::vector<std::string>& tipos, const std::string& descripcion, const std::unordered_map<std::string, int>& ataquesDisponiblesPorNivel, const std::array<int, 3>& experienciaProximoNivel);
+    // Contructor parametros y con evolución
     PokemonInfo(const std::vector<std::string>& tipos, const std::string& descripcion, const std::unordered_map<std::string, int>& ataquesDisponiblesPorNivel, const std::array<int, 3>& experienciaProximoNivel, const std::pair<int, std::string>& evolucion);
 
-    ~PokemonInfo() = default;
+    ~PokemonInfo() = default; // Destructor
 
     // Getters
     const std::vector<std::string>& getTipos() const ;

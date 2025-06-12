@@ -1,12 +1,13 @@
 #include "PokemonInfo.h"
 
-// Constructor
+// Constructor con parametros
 PokemonInfo::PokemonInfo(const std::vector<std::string>& tipos, const std::string& descripcion, const std::unordered_map<std::string, int>& ataquesDisponiblesPorNivel, const std::array<int, 3>& experienciaProximoNivel) :
     tipos(tipos),
     descripcion(descripcion),
     ataquesDisponiblesPorNivel(ataquesDisponiblesPorNivel),
     experienciaProximoNivel(experienciaProximoNivel) {}
 
+// Constructor con parametros ycon evolución
 PokemonInfo::PokemonInfo(const std::vector<std::string>& tipos, const std::string& descripcion, const std::unordered_map<std::string, int>& ataquesDisponiblesPorNivel, const std::array<int, 3>& experienciaProximoNivel, const std::pair<int, std::string>& evolucion) :
     tipos(tipos),
     descripcion(descripcion),

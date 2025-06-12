@@ -1,7 +1,9 @@
 #include "Pokemon.h"
 
-// Constructor
+// Constructor con nombre y experiencia
 Pokemon::Pokemon(const std::string& nombre, int experiencia) : nombre(nombre), experiencia(experiencia) {}
+
+// Constructor con nombre, experiencia y número de Pokedex
 Pokemon::Pokemon(const std::string& nombre, int experiencia, const int poke_num) 
     : nombre(nombre), experiencia(experiencia), poke_num(poke_num) {}
 

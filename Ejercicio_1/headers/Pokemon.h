@@ -8,6 +8,7 @@ private:
     const std::string nombre; // Nombre del Pokémon, se define como constante para que no pueda ser modificado una vez creado
     int experiencia; // Experiencia del Pokémon, se puede modificar a través de un setter, sirve para evolucionar o subir de nivel
     const int poke_num = 0; // Número de Pokedex del Pokémon, se define como constante para que no pueda ser modificado una vez creado
+
 public:
     // Constructor y destructor
     Pokemon() = default; // Constructor por defecto
@@ -19,7 +20,7 @@ public:
     // Sobrecarga del operador == para poder usar los objetos pokemones como key del unordered_map de la pokedex
     bool operator==(const Pokemon& other) const {return this->nombre == other.nombre && this->experiencia == other.experiencia;}
 
-    // Setters.
+    // Setters. Solo se permite modificar la experiencia, el nombre y el número de Pokedex son constantes.
     void setExperiencia(int experiencia);
 
     // Getters.

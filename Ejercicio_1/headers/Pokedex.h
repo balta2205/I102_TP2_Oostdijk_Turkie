@@ -7,7 +7,8 @@
 
 class PokemonHash {
 public:
-    size_t operator()(const Pokemon& pokemon) const; 
+    // Utiliza el nombre del Pokemon como base para el hash
+    size_t operator()(const Pokemon& pokemon) const {return std::hash<std::string>()(pokemon.getNombre());}
 };
 
 class Pokedex {
