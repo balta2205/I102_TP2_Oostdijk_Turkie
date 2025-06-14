@@ -33,9 +33,9 @@ void ImprimirConsignas(Partes parte) { // Imprime las consignas del ejercicio de
             std::cout << "============================================================================================================================" << std::endl;
             std::cout << "EJERCICIO 1: POKEDEX" << std::endl;
             std::cout << "============================================================================================================================" << std::endl;
-            std::cout << "PARTE ADICIONAL 3: CREAR UNA POKEDEX, EL USUARIO INGRESA POKEMONES, Y SERIALIZA LOS DATOS." << std::endl;
+            std::cout << "PARTE ADICIONAL 3: CREAR UN EQUIPO POKEMON, EL USUARIO INGRESA POKEMONES, Y PUEDE EVOLUCIONARLOS." << std::endl;
             std::cout << "============================================================================================================================" << std::endl;
-            std::cout << "Esta parte del ejercicio permite al programa cargar/serializar los datos a un archivo .bin llamado pokedex_serializada.bin." << std::endl;
+            std::cout << "Esta parte del ejercicio permite al usuario crear su propio equipo de 6 pokemones y, una vez ingresados, evolucionarlos." << std::endl;
             std::cout << "============================================================================================================================" << std::endl;
             break;
     }
@@ -88,6 +88,73 @@ int generarDesdeExperiencia(const std::array<int, 3>& niveles) { // Genera un n�
     return valor;
 }
 
+std::pair<Pokemon, PokemonInfo> leerLinea(const std::string& linea) { // Leer una línea del archivo txt
+    std::istringstream iss(linea);
+    std::string campo;
+    std::vector<std::string> campos;
+
+    // Separar los campos por ';'
+    while (std::getline(iss, campo, ';')) {campos.push_back(campo);}
+
+    // Verificar que la línea tenga al menos 7 campos
+    if (campos.size() < 7) {throw std::runtime_error("Línea malformada en el archivo CSV.");}
+
+    // Número de Pokedex y nombre
+    int poke_num = std::stoi(campos[0]);
+    std::string nombre = campos[1];
+
+    // Tipos
+    std::vector<std::string> tipos;
+    std::istringstream tiposStream(campos[2]);
+    std::string tipo;
+    while (std::getline(tiposStream, tipo, ',')) {
+        tipos.push_back(tipo);
+    }
+
+    // Descripción
+    std::string descripcion = campos[3];
+
+    // Ataques
+    std::unordered_map<std::string, int> ataques;
+    std::istringstream todos_ataquesStream(campos[4]);
+    std::string ataque;
+    while (std::getline(todos_ataquesStream, ataque, ',')) {
+        if (ataque.empty()) continue;
+        std::istringstream ataqueStream(ataque);
+        std::string nombreAtaque;
+        int fuerza;
+        std::getline(ataqueStream, nombreAtaque, ':');
+        ataqueStream >> fuerza;
+        ataques[nombreAtaque] = fuerza;
+    }
+
+    // Experiencia por nivel
+    std::array<int, 3> experienciaProximoNivel;
+    std::istringstream experienciaStream(campos[5]);
+    std::string experienciaNivel;
+    int i = 0;
+    while (std::getline(experienciaStream, experienciaNivel, ',')) {
+        experienciaProximoNivel[i++] = std::stoi(experienciaNivel);
+    }
+
+    // Evolución
+    std::pair<int, std::string> evolucion;
+    std::istringstream evolucionStream(campos[6]);
+    std::string evolucionNumero, evolucionNombre;
+    std::getline(evolucionStream, evolucionNumero, ',');
+    std::getline(evolucionStream, evolucionNombre);
+    evolucion = std::make_pair(std::stoi(evolucionNumero), evolucionNombre);
+
+    // Generar experiencia aleatoria
+    int experiencia = generarDesdeExperiencia(experienciaProximoNivel);
+
+    // Crear el Pokemon y su información
+    Pokemon pokemon(nombre, experiencia, poke_num);
+    PokemonInfo info(tipos, descripcion, ataques, experienciaProximoNivel, evolucion);
+
+    return std::make_pair(pokemon, info);
+}
+
 // Lee un archivo de texto con datos de Pokemon y los agrega a la Pokedex
 void leerArchivo(const std::string& rutaArchivo, Pokedex& pokedex, std::unordered_map<int, std::pair<std::string, int>>& numerosNombres) {
     // Abrir el archivo
@@ -100,70 +167,10 @@ void leerArchivo(const std::string& rutaArchivo, Pokedex& pokedex, std::unordere
 
     std::string linea;
     while (std::getline(archivo, linea)) { // Leer cada línea del archivo
-        if (linea.empty()) continue; // Si la línea está vacía, saltarla
-        std::istringstream iss(linea);
-        std::string campo;
-        std::vector<std::string> campos;
-
-        while (std::getline(iss, campo, ';')) {campos.push_back(campo);} // Separar los campos por ';'
-        
-        int poke_num = std::stoi(campos[0]); // Número de Pokedex
-        std::string nombre = campos[1]; // Nombre del Pokemon
-
-        // Separar los tipos por ','
-        std::vector<std::string> tipos; // Vector para almacenar los tipos
-        std::istringstream tiposStream(campos[2]);
-        std::string tipo;
-        while (std::getline(tiposStream, tipo, ',')) {tipos.push_back(tipo);}
-
-        std::string descripcion = campos[3]; // Descripción del Pokemon
-        
-        std::unordered_map<std::string, int> ataques; // Mapa para almacenar los ataques y su daño
-        std::istringstream todos_ataquesStream(campos[4]);
-        std::string ataque;
-        while (std::getline(todos_ataquesStream, ataque, ',')) { // Separar los ataques por ','
-            if (ataque.empty()) continue; // Si el ataque está vacío, saltarlo
-            std::istringstream ataqueStream(ataque);
-            std::string nombreAtaque;
-            int fuerza;
-            std::getline(ataqueStream, nombreAtaque, ':'); // Nombre del ataque
-            ataqueStream >> fuerza; // Daño del ataque
-            ataques[nombreAtaque] = fuerza; // Agregar al mapa
-        }
-
-        std::array<int, 3> experienciaProximoNivel; // Array para almacenar la experiencia necesaria por nivel
-        std::istringstream experienciaStream(campos[5]);
-        std::string experienciaNivel;
-        int i = 0;
-        while (std::getline(experienciaStream, experienciaNivel, ',')) {
-            experienciaProximoNivel[i++] = std::stoi(experienciaNivel); // Convertir a entero y almacenar en el array
-        }
-
-        std::pair<int, std::string> evolucion; // Par para almacenar la evolución del Pokemon
-        std::istringstream evolucionStream(campos[6]);
-        std::string evolucionNumero, evolucionNombre;
-        std::getline(evolucionStream, evolucionNumero, ','); // Número de evolución
-        std::getline(evolucionStream, evolucionNombre); // Nombre de evolución
-        evolucion = std::make_pair(std::stoi(evolucionNumero), evolucionNombre);
-
-        // Generar un número aleatorio entre los límites de experiencia por nivel
-        int experiencia = generarDesdeExperiencia(experienciaProximoNivel);
-
-        std::pair<std::string, int> par_Datos = std::make_pair(nombre, experiencia);
-
-        // Agregar el nombre del Pokemon al mapa de números y nombres
-        numerosNombres[poke_num] = par_Datos;
-
-        // Crear el Pokemon y su información
-        Pokemon nuevoPokemon(nombre, experiencia, poke_num);
-        // Crear la información del Pokemon
-        PokemonInfo nuevaInfo(tipos, descripcion, ataques, experienciaProximoNivel, evolucion);
-        // Agregar el Pokemon y su información a la Pokedex
-        pokedex.agregarPokemon(nuevoPokemon, nuevaInfo);
+        auto [pokemon, info] = leerLinea(linea);
+        pokedex.agregarPokemon(pokemon, info);
+        numerosNombres[pokemon.getPokeNum()] = {pokemon.getNombre(), pokemon.getExperiencia()};
     }
-
-    std::cout << "Pokedex creada con exito! Ahora puede buscar cualquier Pokemon de la primera generacion (1-151)." << std::endl;
-    std::cout << "============================================================================================================================" << std::endl;
 
     archivo.close();
     return;
@@ -197,7 +204,149 @@ std::pair<Pokemon, PokemonInfo> buscarEnPokedex(const T& pokemonBuscado, const P
     return std::make_pair(Pokemon("", 0), PokemonInfo()); // Retorna un Pokemon vacío si no se encuentra
 }
 
+std::pair<Pokemon, PokemonInfo> buscarEnPokedex(Pokemon& pokemonBuscado){ // Buscar la evolucion de un Pokemon en el txt
+    std::ifstream archivo("datos_pokemones.txt");
+
+    if (!archivo.is_open()) { // Si no se puede abrir el archivo, mostrar un mensaje de error
+        SystemClear();
+        std::cerr << "Error al abrir el archivo: datos_pokemones.txt" << std::endl;
+        return std::make_pair(Pokemon("", 0), PokemonInfo());
+    }
+
+    std::string linea;
+    while (std::getline(archivo, linea)){
+        if (linea.empty()) continue; // Si la línea está vacía, saltarla
+        std::istringstream iss(linea);
+        std::string campo;
+        std::vector<std::string> campos;
+
+        while (std::getline(iss, campo, ';')) {campos.push_back(campo);} // Separar los campos por ';'
+
+        // Evolución
+        std::pair<int, std::string> evolucion;
+        std::istringstream evolucionStream(campos[6]);
+        std::string evolucionNumero, evolucionNombre;
+        std::getline(evolucionStream, evolucionNumero, ',');
+        std::getline(evolucionStream, evolucionNombre);
+        evolucion = std::make_pair(std::stoi(evolucionNumero), evolucionNombre);
+
+        // Si el pokemon no tiene evolucion, se descarta la posibilidad de evolucionar
+        if((pokemonBuscado.getNombre() == campos[1]) && (std::stoi(evolucionNumero) == 0)){
+            archivo.close();
+            return std::make_pair(Pokemon("", 0), PokemonInfo());
+        }
+
+        // Si el numero de pokedex de la evolucion del Pokemon no coincide con el numero de pokedex del pokemon actual aumentado en 1, continuar con la siguiente línea
+        if (std::stoi(campos[0]) != (pokemonBuscado.getPokeNum() + 1)) {continue;} 
+
+        auto [pokemon_evolucion, info_evolucion] = leerLinea(linea); // Leer la línea y obtener el Pokemon y su información
+
+        archivo.close();
+        return std::make_pair(pokemon_evolucion, info_evolucion);
+    }
+    archivo.close();
+    return std::make_pair(Pokemon("", 0), PokemonInfo()); // Retorna un Pokemon vacío si no se encuentra
+}
+
+// Concepto que restringe el tipo T a que sea int o std::string
+template<typename T>
+concept EntradaValida = std::same_as<T, int> || std::same_as<T, std::string>;
+
+// Función genérica que lee un dato desde la entrada estándar.
+// Puede usarse para leer enteros o cadenas de texto.
+// Parámetros:
+// - mensaje: texto que se muestra al usuario como prompt
+// - pide_tipos_ataques: si es true y el tipo es string, permite aceptar cadenas vacías
+// - min, max: límites para validación de números enteros
+template<EntradaValida T>
+T leerDato(const std::string& mensaje, bool pide_tipos_ataques = false, int min = std::numeric_limits<int>::min(), int max = std::numeric_limits<int>::max()) {
+    std::string input;
+
+    while (true) {
+        std::cout << mensaje;
+        std::getline(std::cin, input);
+
+        if constexpr (std::same_as<T, int>) { // Si el tipo T es int, se intenta convertir la entrada a entero
+            try {
+                int valor = std::stoi(input);
+
+                if (valor < min || valor > max) { // Verifica que el número esté dentro del rango permitido
+                    std::cout << "El número debe estar entre " << min << " y " << max << ".\n";
+                    continue;
+                }
+
+                return valor; // Si es válido, lo retorna
+            } 
+            catch (const std::invalid_argument&) {std::cout << "Entrada inválida. Ingrese un número entero.\n";} 
+            catch (const std::out_of_range&) {std::cout << "Número fuera de rango.\n";}
+        } 
+        else { // Si el tipo T es string
+            if (pide_tipos_ataques && input.empty()) {return "";} // Permite string vacío solo si se está pidiendo un tipo o ataque opcional
+
+            if (input.empty()) {std::cout << "El texto no puede estar vacío.\n";} 
+
+            else {return input;}
+        }
+    }
+}
+
+
+void evolucion(Pokedex& pokedex) { // Función para evolucionar Pokémon
+    SystemClear();
+    std::cout << "===========================================================================================================================================================" << std::endl;
+    std::cout << "DESCUBRIMIENTO DE ULTIMO MINUTO: LOS CIENTIFICOS HAN DESCUBIERTO UNA POCION QUE LE OTORGA EXPERIENCIA A LOS POKEMONES RESULTANDO EN EVOLUCIONES ESPONTANEAS"  << std::endl;
+    std::cout << "===========================================================================================================================================================" << std::endl;
+
+    auto mapa = pokedex.getPokedex();
+
+    while(true){
+    
+        std::cout << "Desea utilizar la pocion para evolucionar a sus Pokemon? (y/n): ";
+        char respuesta;
+        std::cin >> respuesta;
+        if (respuesta != 'y' && respuesta != 'Y') {
+            std::cout << "Terminando evoluciones..." << std::endl; // Si el usuario no desea utilizar la poción, se sale del bucle
+            break;
+        }
+
+
+        std::cout << "============================================================================================================================" << std::endl;
+        std::cout << "Sus pokemones disponibles son:\n";
+        int contador = 1;
+        for(const auto& [pokemon, informacion] : mapa) { // Muestra todos los Pokémon disponibles en la Pokedex
+            std::cout << "    " << contador++ << ". " << pokemon.getNombre() << " (Nro. Pokedex: " << pokemon.getPokeNum() << ", Experiencia: " << pokemon.getExperiencia() << ")" << std::endl;
+        }
+        std::cout << "============================================================================================================================" << std::endl;
+
+        std::cout << "Ingrese el numero del Pokemon que desea evolucionar, solo se puede usar la pocion un pokemon a la vez: ";
+        int numeroPokemon;
+        std::cin >> numeroPokemon;
+
+        // Validar la entrada del usuario
+        if (numeroPokemon < 1 || numeroPokemon > contador - 1) { // Si el número ingresado no es válido, se sale del programa
+            std::cout << "Numero de Pokemon invalido. Saliendo del programa..." << std::endl;
+            return;
+        }
+
+        auto it = mapa.begin();
+        std::advance(it, numeroPokemon - 1); // Avanzar el iterador hasta el Pokémon seleccionado
+        Pokemon pokemonSeleccionado = it->first; // Obtener el Pokémon seleccionado
+        std::cout << "Pokemon seleccionado: " << pokemonSeleccionado.getNombre() << std::endl;
+        auto [pokemonEvolucion, infoEvolucion] = buscarEnPokedex(pokemonSeleccionado);
+        if (pokemonEvolucion.getNombre().empty()) {
+            std::cout << "El Pokemon seleccionado ya se encuentra en su forma final o simplemente no tiene evolucion. Si desea puede volver a elegir." << std::endl;
+            continue;
+        }
+        SystemClear();
+        mapa.erase(it->first); // Eliminar el Pokémon seleccionado del mapa
+        mapa[pokemonEvolucion] = infoEvolucion; // Agregar la evolución al mapa 
+
+        std::cout << "El Pokemon " << pokemonSeleccionado.getNombre() << " esta EVOLUCIONANDO a " << pokemonEvolucion.getNombre() << "!\n" << std::endl;
+    }
+}
+
 void primerAdicional(){ // Función para la primera parte adicional del ejercicio
+
     SystemClear(); // Limpia la consola antes de continuar con la parte adicional
     ImprimirConsignas(Partes::SEGUNDA); // Imprime las consignas de la parte adicional
     
@@ -217,6 +366,9 @@ void primerAdicional(){ // Función para la primera parte adicional del ejercici
     mostrarBarraDeCargaConPorcentaje(); // Mostrar barra de carga con 50 pasos y 50 ms por paso
     
     leerArchivo("datos_pokemones.txt", pokedexCompleta, numerosNombres); // Leer el archivo de datos de los Pokemon y cargar los datos en la Pokedex
+
+    std::cout << "Pokedex creada con exito! Ahora puede buscar cualquier Pokemon de la primera generacion (1-151)." << std::endl;
+    std::cout << "============================================================================================================================" << std::endl;
 
     char response;
     std::string informacion;
@@ -239,125 +391,111 @@ void primerAdicional(){ // Función para la primera parte adicional del ejercici
             std::pair<Pokemon, PokemonInfo> resultado = buscarEnPokedex(informacion, pokedexCompleta, numerosNombres);
             if (resultado.first.getNombre().empty()) {
                 std::cout << "Pokemon no encontrado." << std::endl;
-                return;
+                continue;
             }
             std::cout << "Pokemon encontrado: " << resultado.first.getNombre() << std::endl; // Muestra el nombre del Pokemon encontrado
         }
 
-        std::cout << "============================================================================" << std::endl;
+        std::cout << "============================================================================================================================\n" << std::endl;
         std::cout << "Desea seguir agregando pokemones? (y/n): ";
         std::cin >> response;
+        std::cout << std::endl;
         if (response != 'y' && response != 'Y'){
             std::cout << "Saliendo del programa..." << std::endl; // Si el usuario no desea seguir agregando Pokemon, se sale del programa
             return;
         }
-    }
-}
-
-template<typename T>
-concept EntradaValida = std::same_as<T, int> || std::same_as<T, std::string>;
-
-template<EntradaValida T>
-// Función para leer datos del usuario, puede ser un número entero o una cadena de texto
-T leerDato(const std::string& mensaje, bool pide_tipos_ataques = false, int min = std::numeric_limits<int>::min(), int max = std::numeric_limits<int>::max()) {
-    std::string input;
-
-    while (true) {
-        std::cout << mensaje;
-        std::getline(std::cin, input);
-
-        if constexpr (std::same_as<T, int>) {
-            try {
-                int valor = std::stoi(input);
-                if (valor < min || valor > max) {
-                    std::cout << "El número debe estar entre " << min << " y " << max << ".\n";
-                    continue;
-                }
-                return valor;
-            } catch (const std::invalid_argument&) {
-                std::cout << "Entrada inválida. Ingrese un número entero.\n";
-            } catch (const std::out_of_range&) {
-                std::cout << "Número fuera de rango.\n";
-            }
-        } else {
-            if(pide_tipos_ataques && input.empty()) {
-                return ""; // Si se pide un ataque y el input está vacío, se retorna una cadena vacía
-            }
-            if (input.empty()) {
-                std::cout << "El texto no puede estar vacío.\n";
-            } else {
-                return input;
-            }
-        }
+        SystemClear();
     }
 }
 
 void tercerAdicional() { // Función para la tercera parte adicional del ejercicio
     SystemClear();    
 
+    Pokedex pokedexCompleta;
+    std::unordered_map<int, std::pair<std::string, int>> numerosNombres; // Mapa para almacenar los números y nombres de los Pokemon
+    leerArchivo("datos_pokemones.txt", pokedexCompleta, numerosNombres); // Leer el archivo de datos de los Pokemon y cargar los datos en la Pokedex
+
     Pokedex pokedexUsuario; // Crear una Pokedex para el usuario
 
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignorar el salto de línea previo
-    std::string continuar = leerDato<std::string>("¿Desea agregar un Pokémon a su Pokedex? (y/n): ");
+    std::string continuar = leerDato<std::string>("¿Desea agregar un Pokémon a su equipo? (y/n): ");
     if (continuar != "y" && continuar != "Y") {
         std::cout << "Saliendo del programa..." << std::endl; // Si el usuario no desea agregar Pokémon, se sale del programa
         return;
     }
 
-    for(int i = 0; i < 6; ++i) { // Permite agregar hasta 6 Pokémon
+    int contador = 6;
+    char response;
+    std::string informacion;
+    while(contador > 0) { // Permite agregar hasta 6 Pokémon
         SystemClear();
-        std::string nombre = leerDato<std::string>("Ingrese el nombre del Pokémon: ", false); // Leer el nombre del Pokémon
-        int experiencia = leerDato<int>("Ingrese la experiencia del Pokémon: ", false, 0, 1000000); // Leer la experiencia del Pokémon, con un rango de 0 a 1,000,000
-        int poke_num = leerDato<int>("Ingrese el número de Pokédex (1-151): ", false, 1, 151); // Leer el número de Pokédex del Pokémon, con un rango de 1 a 151
+        std::cout << "============================================================================================================================" << std::endl;
+        std::cout << "Espacios disponibles en el equipo: " << contador << std::endl;
+        std::cout << "============================================================================================================================\n" << std::endl;
 
-        Pokemon nuevoPokemon(nombre, experiencia, poke_num); // Crear un nuevo Pokémon con el nombre, experiencia y número de Pokédex
+        // Solicitar al usuario que ingrese el nombre del Pokemon o su número de Pokedex
+        std::cout << "Ingresar el nombre del Pokemon o su numero de Pokedex (1-151): ";
+        std::cin >> informacion;
+        std::cout << std::endl;
+        bool esNumero = !informacion.empty() && std::all_of(informacion.begin(), informacion.end(), ::isdigit);
 
-        std::string tipo1 = leerDato<std::string>("Ingrese el primer tipo del Pokémon: ", false); // Leer el primer tipo del Pokémon
-        std::string tipo2 = leerDato<std::string>("Ingrese el segundo tipo (o deje en blanco): ", true); // Leer el segundo tipo del Pokémon, puede dejarse en blanco
-        std::vector<std::string> tipos = {tipo1, tipo2}; // Crear un vector de tipos, puede contener uno o dos tipos
+        if(esNumero){// Si la información ingresada es un número, se convierte a entero
+            // Validar que el número esté dentro del rango de la primera generación (1-151)
+            int poke_num = std::stoi(informacion);
+            if (poke_num < 1 || poke_num > 151) {
+                std::cout << "Numero de Pokedex invalido. Debe estar entre 1 y 151." << std::endl;
+                continue;
+            }
 
-        std::string descripcion = leerDato<std::string>("Ingrese una descripción del Pokémon: ", false); // Leer la descripción del Pokémon
-
-        std::unordered_map<std::string, int> ataques; // Mapa para almacenar los ataques y su daño
-        for (int i = 0; i < 5; ++i) {
-            std::string nombreAtaque = leerDato<std::string>("Ingrese el nombre del ataque (o deje en blanco para terminar): ", true); // Leer el nombre del ataque, puede dejarse en blanco para terminar
-            if (nombreAtaque.empty()) break;
-            int dano = leerDato<int>("Ingrese el daño del ataque: ", false, 1, 1000); // Leer el daño del ataque, con un rango de 1 a 1000
-            ataques[nombreAtaque] = dano;
+            std::pair<Pokemon, PokemonInfo> resultado = buscarEnPokedex(poke_num, pokedexCompleta, numerosNombres);
+            std::cout << "Pokemon encontrado: " << resultado.first.getNombre() << std::endl;
+            pokedexUsuario.agregarPokemon(resultado.first, resultado.second);
+        }
+        else{ // Si la información ingresada es un nombre, se busca por nombre
+            std::pair<Pokemon, PokemonInfo> resultado = buscarEnPokedex(informacion, pokedexCompleta, numerosNombres);
+            if (resultado.first.getNombre().empty()) {
+                std::cout << "Pokemon no encontrado." << std::endl;
+                continue;
+            }
+            std::cout << "Pokemon encontrado: " << resultado.first.getNombre() << std::endl; // Muestra el nombre del Pokemon encontrado
+            pokedexUsuario.agregarPokemon(resultado.first, resultado.second);
         }
 
-        std::array<int, 3> experienciaProximoNivel; // Array para almacenar la experiencia necesaria por nivel
-        std::cout << "Ingrese los niveles de experiencia necesarios para el próximo nivel (3 valores):\n";
+        contador--;
+        std::cout << "============================================================================================================================\n" << std::endl;
+        std::cout << "Desea seguir agregando pokemones? (y/n): ";
+        std::cin >> response;
+        std::cout << std::endl;
+        if (response != 'y' && response != 'Y'){break;}
+    }
+    SystemClear();
+    std::cout << "============================================================================================================================" << std::endl;
+    std::cout << "Equipo Final Elegido" << std::endl;
+    std::cout << "============================================================================================================================" << std::endl;
+    pokedexUsuario.mostrarTodos();
 
-        // Leer los niveles de experiencia necesarios para el próximo nivel, con un rango de 1 a 100,000
-        for (int i = 0; i < 3; ++i) {experienciaProximoNivel[i] = leerDato<int>("  Nivel " + std::to_string(i + 1) + ": ", false, 1, 100000);}
+    std::cout << "\n\n============================================================================================================================" << std::endl;
+    std::cout << "Los cientificos han hecho un avance tecnologico. (EVOLUCIONES)" << std::endl;
+    std::cout << "============================================================================================================================" << std::endl;
 
-        int nro_pokedex_evolucion = leerDato<int>("Ingrese el número de Pokédex de la evolución (o 0 si no tiene): ", false, 0, 151); // Leer el número de Pokédex de la evolución del Pokémon, con un rango de 0 a 151 (0 si no tiene evolución)
-        std::string nombre_evolucion = "";
-        // Si el número de Pokédex de la evolución es diferente de 0, se pide el nombre de la evolución
-        if (nro_pokedex_evolucion != 0) {nombre_evolucion = leerDato<std::string>("Ingrese el nombre de la evolución: ", false);}
-
-        // Crear la información del Pokémon y agregarlo a la Pokedex del usuario
-        PokemonInfo nuevoPokemonInfo(tipos, descripcion, ataques, experienciaProximoNivel, std::make_pair(nro_pokedex_evolucion, nombre_evolucion));
-        pokedexUsuario.agregarPokemon(nuevoPokemon, nuevoPokemonInfo);
-        std::cout << "¡Pokémon agregado con éxito!\n";
-
-        // Preguntar al usuario si desea agregar otro Pokémon
-        std::cout << "¿Desea agregar otro Pokémon? (y/n): ";
-        char finalizar;
-        std::cin >> finalizar;
-        if (finalizar != 'y' && finalizar != 'Y') {
-            std::cout << "Saliendo del programa..." << std::endl; // Si el usuario no desea agregar más Pokémon, se sale del programa
-            break;
-        }
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Desea evolucionar algun pokemon? (y/n): ";
+    std::cin >> response;
+    std::cout << std::endl;
+    if (response != 'y' && response != 'Y'){
+        std::cout << "Saliendo del programa..." << std::endl; // Si el usuario no desea evolucionar ningun Pokemon, se sale del programa
+        return;
     }
 
-    // Mostrar cada Pokemon agregado.
-    SystemClear();
-    std::cout << "============================================================================================================================\n";
-    std::cout << "Pokédex del usuario:\n";
-    pokedexUsuario.mostrarTodos(); // Muestra todos los Pokémon agregados por el usuario
+    evolucion(pokedexUsuario);
 
+    std::cout << "Estas listo para admirar tu equipo final evolucionado? (Ingresar cualquier tecla para continuar): ";
+    std::cin >> response;
+    std::cout << std::endl;
+
+    SystemClear();
+    std::cout << "============================================================================================================================" << std::endl;
+    std::cout << "Equipo Final Evolucionado" << std::endl;
+    std::cout << "============================================================================================================================" << std::endl;
+    pokedexUsuario.mostrarTodos(); // Muestra el equipo final evolucionado
     return;
 }

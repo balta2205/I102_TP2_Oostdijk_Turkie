@@ -77,8 +77,10 @@ void Pokedex::mostrarTodos() const {
 }
 
 PokemonInfo Pokedex::getPokemonInfo(const Pokemon& pokemon) const {
-        auto it = informacion.find(pokemon);
-        // Retorna la información del Pokémon si se encuentra
-        if (it != informacion.end()) {return it->second;}
-        throw std::runtime_error("Pokemon no encontrado en la Pokedex."); // Lanza una excepción si el Pokémon no se encuentra
-    }
+    auto it = informacion.find(pokemon);
+    // Retorna la información del Pokémon si se encuentra
+    if (it != informacion.end()) {return it->second;}
+    throw std::runtime_error("Pokemon no encontrado en la Pokedex."); // Lanza una excepción si el Pokémon no se encuentra
+}
+
+std::unordered_map<Pokemon, PokemonInfo, PokemonHash> Pokedex::getPokedex() const {return this->informacion;} // Retorna la Pokedex completa

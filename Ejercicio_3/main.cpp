@@ -40,7 +40,9 @@ void sensor(int idSensor) {
     // Una vez que el sensor termina de generar tareas, informa que terminó    
     unique_lock<mutex> lock(tareas_mtx); // Protección para modificar el contador
     cant_sensores_terminados++;          // Aumenta el contador de sensores finalizados
-    tareas_cv.notify_all();              // Notifica a todos los robots por si están esperando y deben terminar
+    if(cant_sensores_terminados == TOTAL_SENSORES){
+        tareas_cv.notify_all();          // Notifica a todos los robots por si están esperando y deben terminar
+    }
     cout << "[SENSOR " << idSensor << "] Ha terminado de generar tareas. Total tareas generadas: " << cant_tareas << endl;
 }
 

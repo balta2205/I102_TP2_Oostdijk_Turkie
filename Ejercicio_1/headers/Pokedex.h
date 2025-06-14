@@ -28,6 +28,7 @@ public:
     void mostrar(const Pokemon& pokemon) const;
     void mostrarTodos() const;
     PokemonInfo getPokemonInfo(const Pokemon& pokemon) const;
+    std::unordered_map<Pokemon, PokemonInfo, PokemonHash> getPokedex() const;
 };
 
 
