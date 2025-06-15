@@ -2,7 +2,22 @@
 #include "../utilities.h"
 #include "funciones.cpp"
 
-// Función para la segunda parte adicional del ejercicio
+// Función para la primera parte adicional del ejercicio (serializar la Pokedex básica)
+void primerAdicional() {
+    SystemClear();
+    std::cout << "============================================================================================================================" << std::endl;
+    std::cout << "ADICIONAL 1: SERIALIZAR LA POKEDEX BÁSICA" << std::endl;
+    std::cout << "============================================================================================================================" << std::endl;
+
+    Pokedex pokedex = cargarDatosPokedex(); // Usamos la función que crea la Pokedex básica
+
+    std::string archivo = "pokedex_basica.dat";
+    pokedex.serializar(archivo); // Serializa usando el método que ya definimos
+
+    std::cout << "\nLa Pokedex básica ha sido guardada exitosamente en el archivo '" << archivo << "'." << std::endl;
+}
+
+// Función para la segunda parte adicional del ejercicio (mostrar cualquier Pokémon de la primera generación)
 void segundoAdicional(){ 
 
     SystemClear(); // Limpia la consola antes de continuar con la parte adicional
@@ -106,7 +121,7 @@ std::unordered_map<Pokemon, PokemonInfo, PokemonHash> evolucion(Pokedex& pokedex
     return mapa;
 }
 
-// Función para la tercera parte adicional del ejercicio
+// Función para la tercera parte adicional del ejercicio (Crear un equipo de Pokémon, evolucionarlos y guardarlos en un archivo binario)
 void tercerAdicional() { 
     SystemClear();    
     
@@ -185,5 +200,42 @@ void tercerAdicional() {
     std::cout << "Equipo Final Evolucionado" << std::endl;
     std::cout << "============================================================================================================================" << std::endl;
     pokedex_terminada.mostrarTodos(); // Muestra el equipo final evolucionado
+
+
+    std::cout << "\nGuardando equipo final en archivo binario...\n";
+    pokedex_terminada.serializar("equipo_final.dat");
+
     return;
+}
+
+// Función para la cuarta parte adicional del ejercicio (cargar equipo desde un archivo binario)
+void cuartoAdicional() {
+    SystemClear();
+    std::cout << "============================================================================================================================" << std::endl;
+    std::cout << "ADICIONAL 4: CARGAR EQUIPO DESDE ARCHIVO BINARIO" << std::endl;
+    std::cout << "============================================================================================================================" << std::endl;
+
+    std::string archivo = "equipo_final.dat";
+
+    Pokedex pokedex;
+    pokedex.deserializar(archivo);
+
+    std::cout << "\nMostrando el equipo cargado desde '" << archivo << "':\n" << std::endl;
+    pokedex.mostrarTodos();
+}
+
+// Función para la quinta parte adicional del ejercicio (cargar Pokedex básica desde un archivo binario)
+void quintoAdicional() {
+    SystemClear();
+    std::cout << "============================================================================================================================" << std::endl;
+    std::cout << "ADICIONAL 5: CARGAR POKEDEX BÁSICA DESDE ARCHIVO BINARIO" << std::endl;
+    std::cout << "============================================================================================================================" << std::endl;
+
+    std::string archivo = "pokedex_basica.dat";
+
+    Pokedex pokedex;
+    pokedex.deserializar(archivo);
+
+    std::cout << "\nMostrando la Pokedex básica cargada desde '" << archivo << "':\n" << std::endl;
+    pokedex.mostrarTodos();
 }

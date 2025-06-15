@@ -29,6 +29,10 @@ public:
     void mostrarTodos() const;
     PokemonInfo getPokemonInfo(const Pokemon& pokemon) const;
     std::unordered_map<Pokemon, PokemonInfo, PokemonHash> getPokedex() const;
+
+    // Métodos de serialización y deserialización
+    void serializar(const std::string& nombreArchivo) const;
+    void deserializar(const std::string& nombreArchivo);
 };
 
 

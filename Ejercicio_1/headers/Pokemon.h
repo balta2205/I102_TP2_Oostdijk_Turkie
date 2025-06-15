@@ -27,6 +27,10 @@ public:
     const std::string& getNombre() const;
     int getExperiencia() const;
     int getPokeNum() const; 
+
+    // Métodos de serialización y deserialización.
+    void serializar(std::ofstream& out) const;
+    void deserializar(std::ifstream& in);
 };
 
 #endif // POKEMON_H

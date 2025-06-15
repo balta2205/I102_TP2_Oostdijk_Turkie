@@ -51,15 +51,20 @@ int main() {
     std::cout << "En este momento se encuentran disponibles 3 partes adicionales de este ejercicio." << std::endl;
     std::cout << "      Adicional 1: Serializar pokedex (Serializa la Pokedex basica del la Parte Basica)." << std::endl;
     std::cout << "      Adicional 2: Buscar Pokemon por nombre o numero de Pokedex en la POKEDEX MAESTRA." << std::endl;
-    std::cout << "      Adicional 3: Crear tu propio equipo pokemon (6 pokemones), luego los serializa." << std::endl;
+    std::cout << "      Adicional 3: Crear tu propio equipo pokemon (6 pokemones), luego los serializa. (si es que se completó el mismo)" << std::endl;
+    std::cout << "==(ADICIONALES DE DESERIALIZAR)=======================================================================================================" << std::endl;
+    std::cout << "      Adicional 4: Cargar equipo previamente guardado desde archivo binario 'equipo_final.dat'." << std::endl;
+    std::cout << "      Adicional 5: Cargar Pokedex básica desde archivo binario 'pokedex_basica.dat'." << std::endl;
+
+
 
     // Seleccionar una parte adicional para continuar
-    int parteSeleccionada = leerDato<int>("\nSeleccione una parte adicional para continuar (1-3): ", false, 1, 3);
+    int parteSeleccionada = leerDato<int>("\nSeleccione una parte adicional para continuar (1-5): ", false, 1, 5);
 
     // Switch para ejecutar la parte adicional seleccionada
     switch (parteSeleccionada) {
         case 1:
-             
+            primerAdicional(); // Llama a la funcion del primer adicional donde se serializa la Pokedex Basica
             break;
         case 2:
             segundoAdicional(); // Llama a la funcion del primer adicional de Pokedex Maestra 
@@ -67,6 +72,13 @@ int main() {
         case 3:
             tercerAdicional(); // Llama a la funcion del tercer adicional donde el usuario agrega Pokemons manualmente
             break;
+        case 4:
+            cuartoAdicional(); // Llama a la funcion del cuarto adicional donde se carga un equipo desde un archivo binario
+            break;
+        case 5: 
+            quintoAdicional(); // Llama a la funcion del quinto adicional donde se carga la Pokedex Basica desde un archivo binario
+            break;
+        
     }
 
     return 0;

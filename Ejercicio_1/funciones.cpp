@@ -299,3 +299,30 @@ std::pair<Pokemon, PokemonInfo> buscarEnPokedex(Pokemon& pokemonBuscado){
     archivo.close();
     return std::make_pair(Pokemon("", 0), PokemonInfo()); // Retorna un Pokemon vacío si no se encuentra
 }
+
+// Carga los datos de la Pokedex con 3 Pokemon predefinidos (Para el adicional 1, que sería la parte básica del ejercicio)
+Pokedex cargarDatosPokedex() {
+    Pokedex pokedex;
+
+    Pokemon squirtle("Squirtle", 100);
+    PokemonInfo squirtleInfo({"Agua", "Oscuro"}, "Una tortuga pequeña que lanza chorros de agua.",
+        {{"Pistola Agua", 4}, {"Hidrobomba", 6}, {"Danza Lluvia", 5}},
+        {0, 400, 1000});
+
+    Pokemon bulbasaur("Bulbasaur", 270);
+    PokemonInfo bulbasaurInfo({"Planta"}, "Tiene una semilla en su lomo que crece con el tiempo",
+        {{"Latigazo", 4}, {"Hoja Afilada", 6}, {"Rayo Solar", 5}},
+        {0, 300, 1100});
+
+    Pokemon charmander("Charmander", 633);
+    PokemonInfo charmanderInfo({"Fuego"}, "Una lagartija con una llama en su cola.",
+        {{"Ascuas", 4}, {"Lanzallamas", 6}, {"Giro Fuego", 5}},
+        {0, 250, 1300});
+
+    pokedex.agregarPokemon(squirtle, squirtleInfo);
+    pokedex.agregarPokemon(bulbasaur, bulbasaurInfo);
+    pokedex.agregarPokemon(charmander, charmanderInfo);
+
+    return pokedex;
+}
+

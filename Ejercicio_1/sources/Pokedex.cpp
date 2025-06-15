@@ -84,3 +84,45 @@ PokemonInfo Pokedex::getPokemonInfo(const Pokemon& pokemon) const {
 }
 
 std::unordered_map<Pokemon, PokemonInfo, PokemonHash> Pokedex::getPokedex() const {return this->informacion;} // Retorna la Pokedex completa
+
+// Serializa la Pokedex 
+void Pokedex::serializar(const std::string& nombreArchivo) const {
+    std::ofstream out(nombreArchivo, std::ios::binary);
+    if (!out.is_open()) {
+        std::cerr << "Error al abrir el archivo para escritura: " << nombreArchivo << std::endl;
+        return;
+    }
+
+    size_t cantidad = informacion.size();
+    out.write(reinterpret_cast<const char*>(&cantidad), sizeof(cantidad));
+
+    for (const auto& [pokemon, info] : informacion) {
+        pokemon.serializar(out);
+        info.serializar(out);
+    }
+
+    out.close();
+}
+
+// Deserializa la Pokedex 
+void Pokedex::deserializar(const std::string& nombreArchivo) {
+    std::ifstream in(nombreArchivo, std::ios::binary);
+    if (!in.is_open()) {
+        std::cerr << "Error al abrir el archivo para lectura: " << nombreArchivo << std::endl;
+        return;
+    }
+
+    informacion.clear();
+    size_t cantidad = 0;
+    in.read(reinterpret_cast<char*>(&cantidad), sizeof(cantidad));
+
+    for (size_t i = 0; i < cantidad; ++i) {
+        Pokemon p;
+        PokemonInfo pi;
+        p.deserializar(in);
+        pi.deserializar(in);
+        agregarPokemon(p, pi);
+    }
+
+    in.close();
+}

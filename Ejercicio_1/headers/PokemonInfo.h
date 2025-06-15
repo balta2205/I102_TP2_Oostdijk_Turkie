@@ -27,6 +27,10 @@ public:
     const std::unordered_map<std::string, int>& getAtaquesDisponiblesPorNivel() const ;
     const std::array<int, 3>& getExperienciaProximoNivel() const ;
     const std::pair<int, std::string>& getEvolucion() const ;
+
+    // Serialización y deserialización
+    void serializar(std::ofstream& out) const;
+    void deserializar(std::ifstream& in);
 };
 
 #endif // POKEMONINFO_H
