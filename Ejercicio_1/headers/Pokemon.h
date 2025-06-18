@@ -26,7 +26,7 @@ public:
     // Getters.
     const std::string& getNombre() const;
     int getExperiencia() const;
-    int getPokeNum() const; 
+    const int getPokeNum() const; 
 
     // Métodos de serialización y deserialización.
     void serializar(std::ofstream& out) const;
