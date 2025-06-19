@@ -90,7 +90,7 @@ std::unordered_map<Pokemon, PokemonInfo, PokemonHash> evolucion(Pokedex& pokedex
         std::advance(it, numeroPokemon - 1); // Avanzar el iterador hasta el Pokémon seleccionado
         Pokemon pokemonSeleccionado = it->first; // Obtener el Pokémon seleccionado
         std::cout << "Pokemon seleccionado: " << pokemonSeleccionado.getNombre() << std::endl;
-        auto [pokemonEvolucion, infoEvolucion] = buscarEnPokedex(pokemonSeleccionado);
+        auto [pokemonEvolucion, infoEvolucion] = buscarEnPokedexEvolucion(pokemonSeleccionado);
 
         if (pokemonEvolucion.getNombre().empty()) {
             std::cout << "El Pokemon seleccionado ya se encuentra en su forma final o simplemente no tiene evolucion. Si desea puede volver a elegir." << std::endl;
@@ -129,7 +129,11 @@ void segundoAdicional() {
     std::cout << "============================================================================================================================" << std::endl;
     pokedexUsuario.mostrarTodos();
 
-    std::cout << "\n\n============================================================================================================================" << std::endl;
+    if (pokedexUsuario.getPokedex().size() == 6) {
+        std::cout << "\nNo quedan espacios disponibles en el equipo." << std::endl;
+    }
+
+    std::cout << "\n============================================================================================================================" << std::endl;
     std::cout << "Los cientificos han hecho un avance tecnologico. (EVOLUCIONES)" << std::endl;
     std::cout << "============================================================================================================================" << std::endl;
 
@@ -149,6 +153,7 @@ void segundoAdicional() {
     std::cout << "Equipo Final Evolucionado" << std::endl;
     std::cout << "============================================================================================================================" << std::endl;
     pokedex_terminada.mostrarTodos(); // Muestra el equipo final evolucionado
+    pokedex_terminada.serializar("equipo_final.dat"); // Serializa el equipo final evolucionado
 
     return;
 }
@@ -168,6 +173,13 @@ void tercerAdicional() {
 
     std::cout << "\nMostrando el equipo cargado desde '" << archivo << "':\n" << std::endl;
     pokedex.mostrarTodos();
+
+    if (pokedex.getPokedex().size() == 6) {
+        std::cout << "============================================================================================================================" << std::endl;
+        std::cout << "No quedan espacios disponibles en el equipo." << std::endl;
+        std::cout << "Saliendo del programa..." << std::endl; // Si ya no queda espacio en el equipo, se sale del programa
+        return;
+    }
 
     if (!confirmarAccion("¿Desea agregar un Pokémon a su equipo?")) {
         std::cout << "Saliendo del programa..." << std::endl; // Si el usuario no desea agregar Pokémon, se sale del programa

@@ -7,8 +7,7 @@ class Pokemon {
 private: 
     const std::string nombre; // Nombre del Pokémon, se define como constante para que no pueda ser modificado una vez creado
     int experiencia; // Experiencia del Pokémon, se puede modificar a través de un setter, sirve para evolucionar o subir de nivel
-    const int poke_num = 0; // Número de Pokedex del Pokémon, se define como constante para que no pueda ser modificado una vez creado
-    
+    const int poke_num = 0; // Número de Pokedex del Pokémon, se define como constante para que no pueda ser modificado una vez creado  
 
 public:
     // Constructor y destructor

@@ -1,12 +1,9 @@
 #include "Pokedex.h"
 
 // Constructor
-Pokedex::Pokedex(const std::unordered_map<Pokemon, PokemonInfo, PokemonHash>& informacion)
-    : informacion(informacion) {}
+Pokedex::Pokedex(const std::unordered_map<Pokemon, PokemonInfo, PokemonHash>& informacion): informacion(informacion) {}
+Pokedex::Pokedex(const std::string& archivo) : archivoAsociado(archivo) {}
 
-Pokedex::Pokedex(const std::string& archivo) : archivoAsociado(archivo) {
-    deserializar(archivoAsociado); // Carga si el archivo existe
-}
 
 // Destructor
 Pokedex::~Pokedex() {
@@ -103,8 +100,7 @@ std::unordered_map<Pokemon, PokemonInfo, PokemonHash> Pokedex::getPokedex() cons
 void Pokedex::serializar(const std::string& nombreArchivo) const {
     std::ofstream out(nombreArchivo, std::ios::binary);
     if (!out.is_open()) {
-        std::cerr << "Error al abrir el archivo para escritura: " << nombreArchivo << std::endl;
-        return;
+        throw std::runtime_error("Error al abrir el archivo para escritura: " + nombreArchivo);
     }
 
     size_t cantidad = informacion.size();
@@ -122,8 +118,7 @@ void Pokedex::serializar(const std::string& nombreArchivo) const {
 void Pokedex::deserializar(const std::string& nombreArchivo) {
     std::ifstream in(nombreArchivo, std::ios::binary);
     if (!in.is_open()) {
-        std::cerr << "Error al abrir el archivo para lectura: " << nombreArchivo << std::endl;
-        return;
+        throw std::runtime_error("No se pudo abrir '" + nombreArchivo + "' para deserializar.");
     }
 
     informacion.clear();

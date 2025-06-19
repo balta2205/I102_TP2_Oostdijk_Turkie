@@ -136,7 +136,6 @@ void ImprimirConsignas(Partes parte) {
             std::cout << "El usuario puede ver los pokemones cargados." << std::endl;
             std::cout << "============================================================================================================================" << std::endl; 
             break;
-
     }
 }
 
@@ -274,7 +273,7 @@ std::pair<Pokemon, PokemonInfo> buscarEnPokedex(const T& pokemonBuscado, const P
 }
 
 // Buscar la evolucion de un Pokemon en el txt
-std::pair<Pokemon, PokemonInfo> buscarEnPokedex(Pokemon& pokemonBuscado){ 
+std::pair<Pokemon, PokemonInfo> buscarEnPokedexEvolucion(Pokemon& pokemonBuscado){ 
     std::ifstream archivo("datos_pokemones.txt");
 
     if (!archivo.is_open()) { // Si no se puede abrir el archivo, mostrar un mensaje de error
@@ -356,6 +355,10 @@ void armarEquipoPokemon(Pokedex& pokedex, Pokedex& pokedexCompleta, std::unorder
         }
 
         contador--;
+        if (contador == 0) {
+            std::cout << "No quedan espacios disponibles en el equipo." << std::endl;
+            return;
+        }
         std::cout << "============================================================================================================================\n" << std::endl;
         if (!confirmarAccion("Desea seguir agregando pokemones?")){break;}
     }
