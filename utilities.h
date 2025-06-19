@@ -20,6 +20,6 @@
 #include <utility>        // Para std::pair
 #include <vector>
 
-enum class Partes {PRIMERA, SEGUNDA, TERCERA, CUARTA};
+enum class Partes {PRIMERA, SEGUNDA, TERCERA, CUARTA, QUINTA};
 
 #endif // UTILITIES_H

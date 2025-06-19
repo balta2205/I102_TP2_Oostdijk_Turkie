@@ -4,9 +4,23 @@
 Pokedex::Pokedex(const std::unordered_map<Pokemon, PokemonInfo, PokemonHash>& informacion)
     : informacion(informacion) {}
 
+Pokedex::Pokedex(const std::string& archivo) : archivoAsociado(archivo) {
+    deserializar(archivoAsociado); // Carga si el archivo existe
+}
+
+// Destructor
+Pokedex::~Pokedex() {
+    if (!archivoAsociado.empty()) {
+        serializar(archivoAsociado); // Guarda la Pokedex al cerrar
+    }
+}
+
 // Método para agregar un Pokemon y su información a la Pokedex
 void Pokedex::agregarPokemon(const Pokemon& pokemon, const PokemonInfo& info) {
     informacion[pokemon] = info;
+    if (!archivoAsociado.empty()) {
+        serializar(archivoAsociado); // Sobrescribe el archivo con la nueva pokedex
+    }
 }
 
 void Pokedex::mostrar(const Pokemon& pokemon) const {

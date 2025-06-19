@@ -2,26 +2,11 @@
 #include "../utilities.h"
 #include "funciones.cpp"
 
-// Función para la primera parte adicional del ejercicio (serializar la Pokedex básica)
-void primerAdicional() {
-    SystemClear();
-    std::cout << "============================================================================================================================" << std::endl;
-    std::cout << "ADICIONAL 1: SERIALIZAR LA POKEDEX BÁSICA" << std::endl;
-    std::cout << "============================================================================================================================" << std::endl;
-
-    Pokedex pokedex = cargarDatosPokedex(); // Usamos la función que crea la Pokedex básica
-
-    std::string archivo = "pokedex_basica.dat";
-    pokedex.serializar(archivo); // Serializa usando el método que ya definimos
-
-    std::cout << "\nLa Pokedex básica ha sido guardada exitosamente en el archivo '" << archivo << "'." << std::endl;
-}
-
-// Función para la segunda parte adicional del ejercicio (mostrar cualquier Pokémon de la primera generación)
-void segundoAdicional(){ 
+// Función para la primer parte adicional del ejercicio (mostrar cualquier Pokémon de la primera generación)
+void primerAdicional(){ 
 
     SystemClear(); // Limpia la consola antes de continuar con la parte adicional
-    ImprimirConsignas(Partes::TERCERA); // Imprime las consignas de la parte adicional
+    ImprimirConsignas(Partes::SEGUNDA); // Imprime las consignas de la parte adicional
     
     if (!confirmarAccion("\nDesea crear la Pokedex Maestra (contiene los 151 Pokemones)")) {
         std::cout << "Saliendo del programa..." << std::endl; // Si el usuario no desea crear la Pokedex Maestra, se sale del programa
@@ -67,7 +52,7 @@ void segundoAdicional(){
 
         std::cout << "============================================================================================================================\n" << std::endl;
         
-        if (!confirmarAccion("Desea seguir agregando pokemones?")){
+        if (!confirmarAccion("Desea seguir buscando pokemones?")){
             std::cout << "Saliendo del programa..." << std::endl; // Si el usuario no desea seguir agregando Pokemon, se sale del programa
             return;
         }
@@ -121,10 +106,10 @@ std::unordered_map<Pokemon, PokemonInfo, PokemonHash> evolucion(Pokedex& pokedex
     return mapa;
 }
 
-// Función para la tercera parte adicional del ejercicio (Crear un equipo de Pokémon, evolucionarlos y guardarlos en un archivo binario)
-void tercerAdicional() { 
-    SystemClear();    
-    
+// Función para la segunda parte adicional del ejercicio (Crear un equipo de Pokémon, evolucionarlos y guardarlos en un archivo binario)
+void segundoAdicional() {
+    SystemClear();
+    ImprimirConsignas(Partes::TERCERA); // Imprime las consignas de la parte adicional
     Pokedex pokedexCompleta;
     std::unordered_map<int, std::pair<std::string, int>> numerosNombres; // Mapa para almacenar los números y nombres de los Pokemon
     leerArchivo("datos_pokemones.txt", pokedexCompleta, numerosNombres); // Leer el archivo de datos de los Pokemon y cargar los datos en la Pokedex
@@ -135,46 +120,9 @@ void tercerAdicional() {
         std::cout << "Saliendo del programa..." << std::endl; // Si el usuario no desea agregar Pokémon, se sale del programa
         return;
     }
-    int contador = 6;
-    std::string informacion;
-    while(contador > 0) { // Permite agregar hasta 6 Pokémon
-        SystemClear();
-        std::cout << "============================================================================================================================" << std::endl;
-        std::cout << "Espacios disponibles en el equipo: " << contador << std::endl;
-        std::cout << "============================================================================================================================\n" << std::endl;
 
-        // Solicitar al usuario que ingrese el nombre del Pokemon o su número de Pokedex
-        std::cout << "Ingresar el nombre del Pokemon o su numero de Pokedex (1-151): ";
-        std::cin >> informacion;
-        std::cout << std::endl;
-        bool esNumero = !informacion.empty() && std::all_of(informacion.begin(), informacion.end(), ::isdigit);
-
-        if(esNumero){// Si la información ingresada es un número, se convierte a entero
-            // Validar que el número esté dentro del rango de la primera generación (1-151)
-            int poke_num = std::stoi(informacion);
-            if (poke_num < 1 || poke_num > 151) {
-                std::cout << "Numero de Pokedex invalido. Debe estar entre 1 y 151." << std::endl;
-                continue;
-            }
-
-            std::pair<Pokemon, PokemonInfo> resultado = buscarEnPokedex(poke_num, pokedexCompleta, numerosNombres);
-            std::cout << "Pokemon encontrado: " << resultado.first.getNombre() << std::endl;
-            pokedexUsuario.agregarPokemon(resultado.first, resultado.second);
-        }
-        else{ // Si la información ingresada es un nombre, se busca por nombre
-            std::pair<Pokemon, PokemonInfo> resultado = buscarEnPokedex(informacion, pokedexCompleta, numerosNombres);
-            if (resultado.first.getNombre().empty()) {
-                std::cout << "Pokemon no encontrado." << std::endl;
-                continue;
-            }
-            std::cout << "Pokemon encontrado: " << resultado.first.getNombre() << std::endl; // Muestra el nombre del Pokemon encontrado
-            pokedexUsuario.agregarPokemon(resultado.first, resultado.second);
-        }
-
-        contador--;
-        std::cout << "============================================================================================================================\n" << std::endl;
-        if (!confirmarAccion("Desea seguir agregando pokemones?")){break;}
-    }
+    armarEquipoPokemon(pokedexUsuario, pokedexCompleta, numerosNombres, 6); // Permite al usuario armar un equipo de Pokémon
+    
     SystemClear();
     std::cout << "============================================================================================================================" << std::endl;
     std::cout << "Equipo Final Elegido" << std::endl;
@@ -186,6 +134,7 @@ void tercerAdicional() {
     std::cout << "============================================================================================================================" << std::endl;
 
     if (!confirmarAccion("Desea evolucionar algun pokemon?")) {
+        pokedexUsuario.serializar("equipo_final.dat"); // Serializa el equipo final del usuario
         std::cout << "Saliendo del programa..." << std::endl; // Si el usuario no desea evolucionar ningun Pokemon, se sale del programa
         return;
     }
@@ -201,41 +150,42 @@ void tercerAdicional() {
     std::cout << "============================================================================================================================" << std::endl;
     pokedex_terminada.mostrarTodos(); // Muestra el equipo final evolucionado
 
-
-    std::cout << "\nGuardando equipo final en archivo binario...\n";
-    pokedex_terminada.serializar("equipo_final.dat");
-
     return;
 }
 
-// Función para la cuarta parte adicional del ejercicio (cargar equipo desde un archivo binario)
-void cuartoAdicional() {
+// Función para la tercera parte adicional del ejercicio (cargar equipo desde un archivo binario y agregar pokemones)
+void tercerAdicional() {
     SystemClear();
-    std::cout << "============================================================================================================================" << std::endl;
-    std::cout << "ADICIONAL 4: CARGAR EQUIPO DESDE ARCHIVO BINARIO" << std::endl;
-    std::cout << "============================================================================================================================" << std::endl;
-
+    ImprimirConsignas(Partes::CUARTA); // Imprime las consignas de la parte adicional
     std::string archivo = "equipo_final.dat";
 
-    Pokedex pokedex;
+    Pokedex pokedexCompleta;
+    std::unordered_map<int, std::pair<std::string, int>> numerosNombres; // Mapa para almacenar los números y nombres de los Pokemon
+    leerArchivo("datos_pokemones.txt", pokedexCompleta, numerosNombres); // Leer el archivo de datos de los Pokemon y cargar los datos en la Pokedex
+
+    Pokedex pokedex(archivo);
     pokedex.deserializar(archivo);
 
     std::cout << "\nMostrando el equipo cargado desde '" << archivo << "':\n" << std::endl;
     pokedex.mostrarTodos();
+
+    if (!confirmarAccion("¿Desea agregar un Pokémon a su equipo?")) {
+        std::cout << "Saliendo del programa..." << std::endl; // Si el usuario no desea agregar Pokémon, se sale del programa
+        return;
+    }
+    armarEquipoPokemon(pokedex, pokedexCompleta, numerosNombres, 6-pokedex.getPokedex().size()); // Permite al usuario continuar agregando pokemones a su equipo
 }
 
-// Función para la quinta parte adicional del ejercicio (cargar Pokedex básica desde un archivo binario)
-void quintoAdicional() {
+// Función para la cuarta parte adicional del ejercicio (cargar Pokedex básica desde un archivo binario)
+void cuartoAdicional() {
     SystemClear();
-    std::cout << "============================================================================================================================" << std::endl;
-    std::cout << "ADICIONAL 5: CARGAR POKEDEX BÁSICA DESDE ARCHIVO BINARIO" << std::endl;
-    std::cout << "============================================================================================================================" << std::endl;
-
+    ImprimirConsignas(Partes::QUINTA); // Imprime las consignas de la parte adicional
     std::string archivo = "pokedex_basica.dat";
 
     Pokedex pokedex;
+    std::cout << "\nMostrando la Pokedex básica cargada desde '" << archivo << "':\n" << std::endl;
     pokedex.deserializar(archivo);
 
-    std::cout << "\nMostrando la Pokedex básica cargada desde '" << archivo << "':\n" << std::endl;
+
     pokedex.mostrarTodos();
 }

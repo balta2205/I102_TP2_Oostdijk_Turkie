@@ -98,27 +98,45 @@ void ImprimirConsignas(Partes parte) {
             std::cout << "============================================================================================================================" << std::endl;
             break;
         case Partes::SEGUNDA:
-            
+            std::cout << "============================================================================================================================" << std::endl;
+            std::cout << "EJERCICIO 1: POKEDEX" << std::endl;
+            std::cout << "============================================================================================================================" << std::endl;
+            std::cout << "PARTE ADICIONAL 1: MOSTRAR CUALQUIER POKEMON DE LA PRIMERA GENERACION (1:151)" << std::endl; 
+            std::cout << "============================================================================================================================" << std::endl;
+            std::cout << "Esta parte del ejercicio permite buscar cualquier Pokemon de la primera generacion (1-151) por su nombre o numero de Pokedex." << std::endl;
+            std::cout << "El programa cargara los datos de un archivo de texto llamado pokemon_data.txt." << std::endl;
+            std::cout << "============================================================================================================================" << std::endl;
             break;
         case Partes::TERCERA:
             std::cout << "============================================================================================================================" << std::endl;
             std::cout << "EJERCICIO 1: POKEDEX" << std::endl;
             std::cout << "============================================================================================================================" << std::endl;
-            std::cout << "PARTE ADICIONAL 2: MOSTRAR CUALQUIER POKEMON DE LA PRIMERA GENERACION (1:151)" << std::endl; 
+            std::cout << "PARTE ADICIONAL 2: CREAR UN EQUIPO POKEMON, EL USUARIO INGRESA POKEMONES, Y PUEDE EVOLUCIONARLOS." << std::endl;
             std::cout << "============================================================================================================================" << std::endl;
-            std::cout << "Esta parte del ejercicio permite buscar cualquier Pokemon de la primera generacion (1-151) por su nombre o numero de Pokedex." << std::endl;
-            std::cout << "El programa cargara los datos de un archivo de texto llamado pokemon_data.txt." << std::endl;
+            std::cout << "Esta parte del ejercicio permite al usuario crear su propio equipo de 6 pokemones y, una vez ingresados, evolucionarlos." << std::endl;
             std::cout << "============================================================================================================================" << std::endl;
             break;
         case Partes::CUARTA:
             std::cout << "============================================================================================================================" << std::endl;
             std::cout << "EJERCICIO 1: POKEDEX" << std::endl;
             std::cout << "============================================================================================================================" << std::endl;
-            std::cout << "PARTE ADICIONAL 3: CREAR UN EQUIPO POKEMON, EL USUARIO INGRESA POKEMONES, Y PUEDE EVOLUCIONARLOS." << std::endl;
+            std::cout << "ADICIONAL 3: CARGAR EQUIPO DESDE ARCHIVO BINARIO Y AGREGAR POKEMONES AL MISMO" << std::endl;
             std::cout << "============================================================================================================================" << std::endl;
-            std::cout << "Esta parte del ejercicio permite al usuario crear su propio equipo de 6 pokemones y, una vez ingresados, evolucionarlos." << std::endl;
-            std::cout << "============================================================================================================================" << std::endl;
+            std::cout << "Esta parte del ejercicio permite cargar un equipo de pokemones desde un archivo binario llamado 'equipo_final.dat'." << std::endl;
+            std::cout << "El usuario puede agregar más pokemones a su equipo." << std::endl;
+            std::cout << "============================================================================================================================" << std::endl; 
             break;
+        case Partes::QUINTA:
+            std::cout << "============================================================================================================================" << std::endl;
+            std::cout << "EJERCICIO 1: POKEDEX" << std::endl;
+            std::cout << "============================================================================================================================" << std::endl;
+            std::cout << "ADICIONAL 4: CARGAR POKEDEX BASICA DESDE ARCHIVO BINARIO" << std::endl;
+            std::cout << "============================================================================================================================" << std::endl;
+            std::cout << "Esta parte del ejercicio permite cargar una Pokedex básica desde un archivo binario llamado 'pokedex_basica.dat'." << std::endl;
+            std::cout << "El usuario puede ver los pokemones cargados." << std::endl;
+            std::cout << "============================================================================================================================" << std::endl; 
+            break;
+
     }
 }
 
@@ -300,29 +318,47 @@ std::pair<Pokemon, PokemonInfo> buscarEnPokedex(Pokemon& pokemonBuscado){
     return std::make_pair(Pokemon("", 0), PokemonInfo()); // Retorna un Pokemon vacío si no se encuentra
 }
 
-// Carga los datos de la Pokedex con 3 Pokemon predefinidos (Para el adicional 1, que sería la parte básica del ejercicio)
-Pokedex cargarDatosPokedex() {
-    Pokedex pokedex;
+// Función que permite al usuario armar su equipo de Pokémon
+void armarEquipoPokemon(Pokedex& pokedex, Pokedex& pokedexCompleta, std::unordered_map<int, std::pair<std::string, int>>& numerosNombres, int contador) {
+    std::string informacion;
+    while(contador > 0) { // Permite agregar hasta 6 Pokémon 
+        SystemClear();
+        std::cout << "============================================================================================================================" << std::endl;
+        std::cout << "Espacios disponibles en el equipo: " << contador << std::endl;
+        std::cout << "============================================================================================================================\n" << std::endl;
 
-    Pokemon squirtle("Squirtle", 100);
-    PokemonInfo squirtleInfo({"Agua", "Oscuro"}, "Una tortuga pequeña que lanza chorros de agua.",
-        {{"Pistola Agua", 4}, {"Hidrobomba", 6}, {"Danza Lluvia", 5}},
-        {0, 400, 1000});
+        // Solicitar al usuario que ingrese el nombre del Pokemon o su número de Pokedex
+        std::cout << "Ingresar el nombre del Pokemon o su numero de Pokedex (1-151): ";
+        std::cin >> informacion;
+        std::cout << std::endl;
+        bool esNumero = !informacion.empty() && std::all_of(informacion.begin(), informacion.end(), ::isdigit);
 
-    Pokemon bulbasaur("Bulbasaur", 270);
-    PokemonInfo bulbasaurInfo({"Planta"}, "Tiene una semilla en su lomo que crece con el tiempo",
-        {{"Latigazo", 4}, {"Hoja Afilada", 6}, {"Rayo Solar", 5}},
-        {0, 300, 1100});
+        if(esNumero){// Si la información ingresada es un número, se convierte a entero
+            // Validar que el número esté dentro del rango de la primera generación (1-151)
+            int poke_num = std::stoi(informacion);
+            if (poke_num < 1 || poke_num > 151) {
+                std::cout << "Numero de Pokedex invalido. Debe estar entre 1 y 151." << std::endl;
+                continue;
+            }
 
-    Pokemon charmander("Charmander", 633);
-    PokemonInfo charmanderInfo({"Fuego"}, "Una lagartija con una llama en su cola.",
-        {{"Ascuas", 4}, {"Lanzallamas", 6}, {"Giro Fuego", 5}},
-        {0, 250, 1300});
+            std::pair<Pokemon, PokemonInfo> resultado = buscarEnPokedex(poke_num, pokedexCompleta, numerosNombres);
+            std::cout << "Pokemon encontrado: " << resultado.first.getNombre() << std::endl;
+            pokedex.agregarPokemon(resultado.first, resultado.second);
+        }
+        else{ // Si la información ingresada es un nombre, se busca por nombre
+            std::pair<Pokemon, PokemonInfo> resultado = buscarEnPokedex(informacion, pokedexCompleta, numerosNombres);
+            if (resultado.first.getNombre().empty()) {
+                std::cout << "Pokemon no encontrado." << std::endl;
+                continue;
+            }
+            std::cout << "Pokemon encontrado: " << resultado.first.getNombre() << std::endl; // Muestra el nombre del Pokemon encontrado
+            pokedex.agregarPokemon(resultado.first, resultado.second);
+        }
 
-    pokedex.agregarPokemon(squirtle, squirtleInfo);
-    pokedex.agregarPokemon(bulbasaur, bulbasaurInfo);
-    pokedex.agregarPokemon(charmander, charmanderInfo);
+        contador--;
+        std::cout << "============================================================================================================================\n" << std::endl;
+        if (!confirmarAccion("Desea seguir agregando pokemones?")){break;}
+    }
 
-    return pokedex;
+
 }
-
