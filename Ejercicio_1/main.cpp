@@ -55,7 +55,7 @@ int main() {
     SystemClear(); // Limpia la consola antes de continuar con la parte adicional
     std::cout << "En este momento se encuentran disponibles 3 partes adicionales de este ejercicio." << std::endl;
     std::cout << "      Adicional 1: Buscar Pokemon por nombre o numero de Pokedex en la POKEDEX MAESTRA." << std::endl;
-    std::cout << "      Adicional 2: Crear tu propio equipo pokemon (6 pokemones), luego los serializa. (si es que se completó el mismo)" << std::endl;
+    std::cout << "      Adicional 2: Crear tu propio equipo pokemon (6 pokemones), luego los serializa." << std::endl;
     std::cout << "==(ADICIONALES DE DESERIALIZAR)=======================================================================================================" << std::endl;
     std::cout << "      Adicional 3: Cargar equipo previamente guardado desde archivo binario 'equipo_final.dat', y opcion de agregar pokemones al mismo" << std::endl;
     
